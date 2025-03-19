@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gtkmon"
+    }
+  },
+  "defaultProject": "gtkmon",
+  "cli": {
+    "analytics": "cb6424a8-77c1-4158-9edf-68e3209f24e6"
+  }
 }

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FirebaseTSApp } from 'firebasets/firebasetsapp/firebaseTSApp';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,4 +17,8 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor() {
+    FirebaseTSApp.init(environment.firebaseConfig);
+  }
+}
