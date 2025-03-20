@@ -1,0 +1,121 @@
+/* Container Principal */
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("src/assets/login.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Container do Formulário */
+#authenticator {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Estilo do mat-card */
+mat-card {
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilo do cabeçalho do card */
+mat-card-header {
+    text-align: center;
+}
+
+/* Título do Card */
+mat-card-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos Inputs */
+input {
+    width: 94%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Ajuste do layout dos botões */
+mat-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+mat-card-actions button {
+    width: auto;
+    padding: 8px 16px;
+    background-color: #c9a040;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+/* Efeito de Hover nos Botões */
+mat-card-actions button:hover {
+    background-color: #a07e33;
+}
+
+/* Estilo do botão do Google Login */
+/* Ajuste para centralizar o botão do Google */
+.google-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    margin-top: 15px;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Garante que o botão tenha largura limitada e fique centralizado */
+.login-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #c9a040;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    width: 250px; /* Mantém o botão em um tamanho fixo e centralizado */
+    text-align: center;
+}
+
+.login-button:hover {
+    background-color: #a07e33;
+    transform: scale(1.05);
+}

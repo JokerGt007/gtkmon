@@ -6,18 +6,33 @@ import { AppComponent } from './app.component';
 import { FirebaseTSApp } from 'firebasets/firebasetsapp/firebaseTSApp';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './tools/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthenticatorComponent } from './tools/authenticator/authenticator.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    AuthenticatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatButtonModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

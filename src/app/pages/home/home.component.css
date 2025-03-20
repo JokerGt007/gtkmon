@@ -58,3 +58,26 @@ html, body {
     font-family: 'Fruktur', cursive;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
 }
+
+.start-button {
+    position: absolute;
+    top: 87%; /* Ajuste conforme necessário */
+    left: 49.9%;
+    transform: translate(-50%, -50%);
+    
+    background-color: #C4A060; 
+    color: #3A240B; 
+    font-size: 32px;
+    font-weight: bold;
+    padding: 16px 32px;
+    border: 3px solid #7D5A30; 
+    border-radius: 12px;
+    cursor: pointer;
+    
+    transition: all 0.3s ease-in-out;
+}
+
+.start-button:hover {
+    background-color: #E0B878;
+    transform: translate(-50%, -50%) scale(1.1);
+}
