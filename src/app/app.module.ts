@@ -13,6 +13,7 @@ import { AngularFireModule } from '@angular/fire/';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthenticatorComponent } from './tools/authenticator/authenticator.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatCardModule } from '@angular/material/card';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [
     AuthService
