@@ -119,3 +119,10 @@ mat-card-actions button:hover {
     background-color: #a07e33;
     transform: scale(1.05);
 }
+
+/* Estilo da logo */
+.logo {
+    width: 300px;  /* Ajuste o valor conforme necessário */
+    height: auto;  /* Mantém a proporção da imagem */
+    margin-bottom: 20px;  /* Espaçamento inferior para separação */
+}

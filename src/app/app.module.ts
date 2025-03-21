@@ -11,16 +11,16 @@ import { AuthService } from './services/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthenticatorComponent } from './tools/authenticator/authenticator.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AuthenticatorComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthService
