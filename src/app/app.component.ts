@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginCompState } from './tools/login/login.component';
 import { Router } from '@angular/router';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
-
+import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,9 @@ export class AppComponent {
   isDarkMode = false;
   state: any;
   auth = new FirebaseTSAuth();
+  firestore = new FirebaseTSFirestore();
+  userHasProfile = true;
+  private static userDocument: UserDocument | null = null;
   isLoggedIn = false;
   constructor(private router: Router) {
     this.auth.listenToSignInStateChanges(
@@ -25,13 +28,13 @@ export class AppComponent {
 
             },
             whenSignedOut: user => {
-
+              
             },
             whenSignedInAndEmailNotVerified: user => {
               this.router.navigate(["emailVerification"])
             },
             whenSignedInAndEmailVerified: user => {
-
+              this.getUserProfile();
             },
             whenChanged: user => {
               
@@ -52,6 +55,25 @@ export class AppComponent {
     document.body.classList.toggle('dark-mode', this.isDarkMode);
   }
 
+  getUsername() {
+    try {
+      return AppComponent.userDocument?.publicName;
+    } catch (err) {}
+  }
+
+  getUserProfile() {
+    this.firestore.listenToDocument(
+      {
+        name: "Getting Document",
+        path: ["Users", this.auth.getAuth().currentUser?.uid],
+        onUpdate: (result) => {
+          AppComponent.userDocument = result.data() as UserDocument;
+          this.userHasProfile = result.exists;
+        }
+      }
+    );
+  }
+
   onLoginClick() {
     this.router.navigate(['/login']);
   }
@@ -67,4 +89,13 @@ export class AppComponent {
   loggedIn(){
     return this.auth.isSignedIn();
   }
+}
+
+export interface UserDocument {
+  publicName: string;
+  types: string;
+  favpoke: string;
+  biograph: string;
+  isAdmin: string;
+  isHunter: string;
 }

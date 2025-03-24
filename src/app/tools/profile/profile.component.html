@@ -1,9 +1,9 @@
 <div id="profile" [ngClass]="{'active': show, 'idle': !show}">
     <div id="profile-content">
-        <input placeholder="Hunter Username">
-        <input placeholder="Fav Type">
-        <input placeholder="Fav Pokemon">
-        <textarea placeholder="Bio"></textarea>
-        <button mat-flat-button color="primary">Continue</button>
+        <input #usernameInput placeholder="Hunter Username">
+        <input #typeInput placeholder="Fav Type">
+        <input #pokeInput placeholder="Fav Pokemon">
+        <textarea #bioInput placeholder="Bio"></textarea>
+        <button (click)="onContinueClick(usernameInput, typeInput, pokeInput, bioInput)" mat-flat-button color="primary">Continue</button>
     </div>
 </div>

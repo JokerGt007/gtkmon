@@ -9,9 +9,9 @@
                 <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_2' }}</mat-icon>
             </button>
             <div *ngIf="!loggedIn()" (click)="onLoginClick()" class="nav-bar-items">Login</div>
-            <!-- <div class="nav-bar-items">
-                Hi,
-            </div> -->
+            <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items">
+                Hi, {{getUsername()}}
+            </div>
             <div *ngIf="loggedIn()" (click)="onLogoutClick()" class="nav-bar-items">Logout</div>
         </div>
     </div>
@@ -19,4 +19,4 @@
 
 <router-outlet></router-outlet>
 
-<app-profile [show]="loggedIn()"></app-profile>
+<app-profile *ngIf="loggedIn() && !userHasProfile" [show]="loggedIn() && !userHasProfile"></app-profile>
