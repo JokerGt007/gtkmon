@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
+import { ProfileComponent } from './tools/profile/profile.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { EmailVerificationComponent } from './pages/email-verification/email-ver
     HomeComponent,
     LoginComponent,
     EmailVerificationComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

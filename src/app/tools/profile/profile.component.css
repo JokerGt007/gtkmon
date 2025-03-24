@@ -1,0 +1,55 @@
+#profile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background-image: url(src/assets/user.png);
+    z-index: 9;
+    transition-duration: .5s;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    width: 100vw;
+}
+
+.idle {
+    width: 0;
+}
+
+#profile-content {
+    width: 100%;
+    max-width: 500px;
+    padding: 2em;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 1em;
+    border-radius: 1em;
+    margin-bottom: .5em;
+    resize: none;
+    outline: none;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    -moz-box-align: border-box;
+    -webkit-box-align: border-box;
+    
+    background-color: rgba(214, 7, 7, 0.2); /* Fundo semitransparente */
+    color: rgb(255, 255, 255); /* Cor do texto */
+    
+    backdrop-filter: blur(8px); /* Efeito de desfoque no fundo */
+    -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+}
+
+input::placeholder, textarea::placeholder {
+    color: white; /* Altere para a cor que você deseja para o placeholder */
+    opacity: 1; /* Opcional: define a opacidade do texto do placeholder, se você quiser um efeito mais suave */
+}
