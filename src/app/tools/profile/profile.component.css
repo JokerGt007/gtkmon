@@ -3,7 +3,11 @@
     top: 0;
     right: 0;
     height: 100vh;
+    width: 100vw; /* Garante que o width seja 100% da largura da tela */
     background-image: url(src/assets/user.png);
+    background-size: cover; /* Faz com que a imagem cubra todo o fundo */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
     z-index: 9;
     transition-duration: .5s;
     overflow: hidden;
@@ -51,5 +55,5 @@ input, textarea {
 
 input::placeholder, textarea::placeholder {
     color: white; /* Altere para a cor que você deseja para o placeholder */
-    opacity: 1; /* Opcional: define a opacidade do texto do placeholder, se você quiser um efeito mais suave */
+    opacity: 1; /* Opacidade máxima */
 }
