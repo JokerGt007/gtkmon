@@ -21,14 +21,14 @@ export class AppComponent {
         this.auth.checkSignInState(
           {
             whenSignedIn: user => {
-              alert("Logged In");
+
 
             },
             whenSignedOut: user => {
-              alert("Logged Out")
+
             },
             whenSignedInAndEmailNotVerified: user => {
-
+              this.router.navigate(["emailVerification"])
             },
             whenSignedInAndEmailVerified: user => {
 

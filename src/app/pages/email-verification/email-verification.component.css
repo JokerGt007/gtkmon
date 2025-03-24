@@ -1,0 +1,63 @@
+#page-landing {
+    width: 100vw; 
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("src/assets/email.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Estilo do Card de Verificação */
+#email-verification {
+    background-color: rgba(226, 226, 226, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    
+    /* Ajustes para centralizar corretamente */
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+} 
+
+#email-verification h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Estilo do Botão */
+#email-verification button {
+    padding: 10px 16px;
+    background-color: #c9a040;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+#email-verification button:hover {
+    background-color: #a07e33;
+}
