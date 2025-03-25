@@ -30,9 +30,19 @@
     font-size: 1.5em;
     display: inline-block;
     cursor: pointer;
-    font-family: 'Fruktur', cursive;
+    font-family: 'PokemonFont', sans-serif;
     margin-right: 1em;
-    color: white; /* Deixa os itens do menu na cor branca */
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
 }
 
 .nav-bar-items:hover {
@@ -45,3 +55,40 @@
     margin-right: 0.5em;
     transform: translateY(2px);
 }
+
+#nav-bar-right button {
+    background: transparent !important; 
+    border: none;
+    box-shadow: none; 
+    padding: 5px;
+    min-width: auto; 
+    margin-right: 1em; 
+    margin-top: 0.6em;
+}
+
+#nav-bar-right button mat-icon {
+    font-size: 2em; 
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
+}
+
+#nav-bar-right button:hover mat-icon {
+    color: #a07e33;
+}
+
+
+#nav-bar-left .logo {
+    width: 100px;  /* Ajuste o tamanho da logo conforme necessário */
+    height: auto; /* Mantém a proporção original da logo */
+    cursor: pointer;  /* Garantir que a logo seja clicável */
+}
+

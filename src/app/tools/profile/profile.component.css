@@ -56,3 +56,19 @@ input::placeholder, textarea::placeholder {
     color: white; /* Altere para a cor que você deseja para o placeholder */
     opacity: 1; /* Opacidade máxima */
 }
+
+.button-continue {
+    background-color: #a07e33;
+    transform: scale(1.05);
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
+}

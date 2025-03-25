@@ -31,6 +31,17 @@
 .btn-primary {
     background-color: #c9a040;
     border: none;
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
     font-weight: bold;
     transition: background-color 0.3s ease;
 }
@@ -43,25 +54,55 @@
 .btn-link {
     color: #f3ba34;
     font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
 }
 
 .btn-link:hover {
     color: #a07e33;
     text-decoration: none;
+    
+    /* Contorno azul mais escuro no hover */
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
 }
+
 
 /* Botão de Login com Google */
 .google-login-container {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
 }
 
 .login-button {
     font-size: 1rem;
     padding: 10px 20px;
     background-color: #c9a040;
-    color: white;
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -87,8 +128,17 @@
 }
 
 .card-title {
-    color: #c9a040;
+    color: #f3ba34;
     font-weight: bold;
+    text-shadow:  
+        -2px -2px 1px #3466af,  
+         2px -2px 1px #3466af,  
+        -2px  2px 1px #3466af,  
+         2px  2px 1px #3466af,
+        0px -3px 1px #3466af, 
+        0px  3px 1px #3466af, 
+        -3px  0px 1px #3466af, 
+         3px  0px 1px #3466af;
 }
 
 .card-header {

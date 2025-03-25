@@ -1,2 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+ /* You can add global styles to this file, and also import other style files */
+ @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+
+@font-face {
+    font-family: 'PokemonFont'; /* Nome que você usará para a fonte */
+    src: url('src/assets/fonts/pokemonsolid.ttf') format('truetype'); /* Caminho da fonte */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Fruktur', cursive; /* Aplica a fonte no corpo do site */
+  }
