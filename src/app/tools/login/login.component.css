@@ -2,37 +2,23 @@
 .login-container {
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url("src/assets/login.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    background: url("src/assets/login.png") center/cover no-repeat;
 }
 
 /* Container do Formulário */
 #authenticator {
-    width: 100%;
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 15px;
 }
 
-/* Estilo do mat-card com efeito de blur */
-mat-card {
-    padding: 20px;
+/* Card com transparência e blur */
+.authenticator-content {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -41,67 +27,36 @@ mat-card {
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* Estilo do cabeçalho do card */
-mat-card-header {
-    text-align: center;
-}
-
-/* Título do Card */
-mat-card-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Estilo dos Inputs */
-input {
-    width: 94%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-}
-
 /* Ajuste do layout dos botões */
-mat-card-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-}
-
-mat-card-actions button {
-    width: auto;
-    padding: 8px 16px;
+.btn-primary {
     background-color: #c9a040;
-    color: white;
     border: none;
-    border-radius: 5px;
     font-weight: bold;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 0.9rem;
 }
 
-/* Efeito de Hover nos Botões */
-mat-card-actions button:hover {
+.btn-primary:hover {
     background-color: #a07e33;
 }
 
-/* Estilo do botão do Google Login */
-/* Ajuste para centralizar o botão do Google */
+/* Botões de link */
+.btn-link {
+    color: #f3ba34;
+    font-weight: bold;
+}
+
+.btn-link:hover {
+    color: #a07e33;
+    text-decoration: none;
+}
+
+/* Botão de Login com Google */
 .google-login-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 180px;
     margin-top: 15px;
-    text-align: center;
-    flex-direction: column;
 }
 
-/* Garante que o botão tenha largura limitada e fique centralizado */
 .login-button {
     font-size: 1rem;
     padding: 10px 20px;
@@ -113,8 +68,7 @@ mat-card-actions button:hover {
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
-    width: 250px; /* Mantém o botão em um tamanho fixo e centralizado */
-    text-align: center;
+    width: 250px;
 }
 
 .login-button:hover {
@@ -124,7 +78,19 @@ mat-card-actions button:hover {
 
 /* Estilo da logo */
 .logo {
-    width: 300px;  /* Ajuste o valor conforme necessário */
-    height: auto;  /* Mantém a proporção da imagem */
-    margin-bottom: 20px;  /* Espaçamento inferior para separação */
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.card-title {
+    color: #c9a040;
+    font-weight: bold;
+}
+
+.card-header {
+    padding: 3%;
 }
