@@ -73,9 +73,9 @@ export class AppComponent {
         onUpdate: (result) => {
           AppComponent.userDocument = result.data() as UserDocument;
           this.userHasProfile = result.exists;
-          if(this.userHasProfile) {
-            this.router.navigate(["capture"]);
-          }
+          // if(this.userHasProfile) {
+          //   this.router.navigate(["capture"]);
+          // }
         }
       }
     );

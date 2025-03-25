@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { ProfileComponent } from './tools/profile/profile.component';
 import { CaptureComponent } from './pages/capture/capture.component';
+import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { CaptureComponent } from './pages/capture/capture.component';
     MatSnackBarModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    FirebaseTSAuth
   ],
   bootstrap: [AppComponent]
 })

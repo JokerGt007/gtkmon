@@ -4,12 +4,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './tools/login/login.component';
 import { EmailVerificationComponent } from './pages/email-verification/email-verification.component';
 import { CaptureComponent } from './pages/capture/capture.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "login", component: LoginComponent},
-  {path: "emailVerification", component: EmailVerificationComponent},
-  {path: "capture", component: CaptureComponent},
+  {path: "emailVerification", component: EmailVerificationComponent, canActivate: [AuthGuard]},
+  {path: "capture", component: CaptureComponent, canActivate: [AuthGuard]},
   {path: "**", component: HomeComponent}
 ];
 
