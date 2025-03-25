@@ -92,3 +92,27 @@
     cursor: pointer;  /* Garantir que a logo seja clicável */
 }
 
+/* Estilos para o Dark Mode */
+.dark-mode {
+    background-color: #121212 !important;  /* Fundo escuro */
+    color: white !important;  /* Texto branco */
+}
+
+/* Aplicando Dark Mode no Navbar */
+.dark-mode #nav-bar {
+    background-color: #1e1e1e !important;
+}
+
+/* Estilos para os botões no modo escuro */
+.dark-mode .nav-bar-items {
+    color: white !important;
+}
+
+.dark-mode .nav-bar-items:hover {
+    color: #f5c518 !important; /* Amarelo no hover */
+}
+
+.dark-mode #nav-bar-right button mat-icon {
+    color: white !important;
+}
+

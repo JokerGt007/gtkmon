@@ -52,8 +52,12 @@ export class AppComponent {
   }
 
   updateTheme() {
-    document.body.classList.toggle('dark-mode', this.isDarkMode);
-  }
+    if (this.isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }  
 
   getUsername() {
     try {
@@ -69,6 +73,9 @@ export class AppComponent {
         onUpdate: (result) => {
           AppComponent.userDocument = result.data() as UserDocument;
           this.userHasProfile = result.exists;
+          if(this.userHasProfile) {
+            this.router.navigate(["capture"]);
+          }
         }
       }
     );
