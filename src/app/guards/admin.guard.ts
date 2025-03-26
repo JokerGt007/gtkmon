@@ -14,33 +14,31 @@ export class AdminGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve) => {
-      const user = this.auth.getAuth().currentUser;
-      
-      if (!user) {
-        console.log("Usuário não autenticado. Redirecionando para login.");
-        this.router.navigate(['/login']);
-        resolve(false);
-        return;
-      }
-
-      this.firestore.getDocument({
-        path: ["Users", user.uid],
-        onComplete: (result) => {
-          const userData = result.data();
-          console.log("Dados do usuário:", userData);
-
-          if (userData && (userData.isAdmin === true || userData.isAdmin === "true")) {
-            console.log("Usuário autorizado como admin.");
-            resolve(true);
-          } else {
-            console.log("Usuário não autorizado. Redirecionando...");
-            this.router.navigate(['/']);
-            resolve(false);
-          }
-        },
-        onFail: (error) => {
-          console.error("Erro ao buscar usuário:", error);
-          this.router.navigate(['/']);
+      this.auth.listenToSignInStateChanges((user) => {
+        if (user) {     
+          this.firestore.getDocument({
+            path: ["Users", user.uid],
+            onComplete: (result) => {
+              if (!result.exists) {
+                this.router.navigate(['/']);
+                resolve(false);
+                return;
+              }
+              const userData = result.data();
+              if (userData?.isAdmin === true || userData?.isAdmin === "true") {
+                resolve(true);
+              } else {
+                this.router.navigate(['/']);
+                resolve(false);
+              }
+            },
+            onFail: (err) => {
+              this.router.navigate(['/']);
+              resolve(false);
+            }
+          });
+        } else {
+          this.router.navigate(['/login']);
           resolve(false);
         }
       });

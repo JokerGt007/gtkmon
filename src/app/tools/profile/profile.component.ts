@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore'
+import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { AlertService } from 'src/app/services/alert.service';
 
@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   firestore: FirebaseTSFirestore;
   auth: FirebaseTSAuth;
+  types: string[] = [];  // Array para armazenar os tipos de Pokémon
 
   constructor(private alertService: AlertService) { 
     this.firestore = new FirebaseTSFirestore();
@@ -20,16 +21,34 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Carregar os tipos de Pokémon do Firestore
+    this.loadPokemonTypes();
+  }
+
+  loadPokemonTypes() {
+    this.firestore.getCollection({
+      path: ["Types"],  // Caminho correto da coleção no Firestore
+      where: [],  // Array vazio para não filtrar nada
+      onComplete: (result) => {
+        if (result && result.docs) {
+          // Extrair o campo 'name' de cada documento e armazenar no array 'types'
+          this.types = result.docs.map((doc) => doc.data().name);  // Correção aqui
+        }
+      },
+      onFail: (error) => {
+        console.error('Erro ao carregar tipos de Pokémon', error);
+      }
+    });
   }
 
   onContinueClick(
     usernameInput: HTMLInputElement,
-    typeInput: HTMLInputElement,
+    typeInput: HTMLSelectElement,  // Alterado para select
     pokeInput: HTMLInputElement,
     bioInput: HTMLTextAreaElement
   ) {
     let username = usernameInput.value;
-    let type = typeInput.value;
+    let favtype = typeInput.value;  // Alterado para favtype
     let poke = pokeInput.value;
     let bio = bioInput.value;
     let isAdmin = false;
@@ -43,20 +62,20 @@ export class ProfileComponent implements OnInit {
       isAdmin = false;
     }
 
-
     this.firestore.create(
       {
         path: ["Users", this.auth.getAuth().currentUser.uid],
         data: {
           publicName: username,
-          types: type,
+          favtype: favtype,  // Usando favtype agora
           favpoke: poke,
           biograph: bio,
           isAdmin: isAdmin,
           isHunter: isHunter
         },
         onComplete: (docId) => {
-          this.alertService.show('Profile Criado', '', 3000);
+          this.alertService.show('Perfil Criado', '', 3000);
+          // Limpar os campos após criação
           usernameInput.value = "";
           typeInput.value = "";
           pokeInput.value = "";

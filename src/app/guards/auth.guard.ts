@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     return new Promise((resolve) => {
       this.auth.listenToSignInStateChanges((user) => {
-        console.log('Estado de autenticação atualizado: ', user);
         if (user) {
           // Se o usuário estiver logado, pode acessar a rota
           resolve(true);

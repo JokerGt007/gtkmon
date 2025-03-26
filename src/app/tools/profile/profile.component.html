@@ -1,9 +1,17 @@
 <div id="profile" [ngClass]="{'active': show, 'idle': !show}">
     <div id="profile-content">
         <input #usernameInput placeholder="Hunter Username">
-        <input #typeInput placeholder="Fav Type">
+        
+        <!-- Seleção de Tipo -->
+        <select #typeInput placeholder="Fav Type">
+            <option value="" disabled selected>Fav Type</option>
+            <!-- Preenche as opções com os tipos de Pokémon que vieram do Firestore -->
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+        
         <input #pokeInput placeholder="Fav Pokemon">
         <textarea #bioInput placeholder="Bio"></textarea>
+        
         <button (click)="onContinueClick(usernameInput, typeInput, pokeInput, bioInput)" mat-flat-button class="button-continue">Continue</button>
     </div>
 </div>

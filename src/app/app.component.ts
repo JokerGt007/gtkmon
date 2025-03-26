@@ -66,20 +66,29 @@ export class AppComponent {
   }
 
   getUserProfile() {
-    this.firestore.listenToDocument(
-      {
-        name: "Getting Document",
-        path: ["Users", this.auth.getAuth().currentUser?.uid],
-        onUpdate: (result) => {
-          AppComponent.userDocument = result.data() as UserDocument;
-          this.userHasProfile = result.exists;
-          if(this.userHasProfile) {
+    this.firestore.listenToDocument({
+      name: "Getting Document",
+      path: ["Users", this.auth.getAuth().currentUser?.uid],
+      onUpdate: (result) => {
+        AppComponent.userDocument = result.data() as UserDocument;
+        this.userHasProfile = result.exists;
+  
+        if (this.userHasProfile) {
+          // Garantir que isAdmin seja tratado como booleano
+          const isAdmin = Boolean(AppComponent.userDocument.isAdmin);
+          
+          if (isAdmin) {
+            console.log("Usuário é admin, redirecionando para listuser...");
+            this.router.navigate(["listuser"]);
+          } else {
+            console.log("Usuário comum, redirecionando para capture...");
             this.router.navigate(["capture"]);
           }
         }
       }
-    );
+    });
   }
+  
 
   onLoginClick() {
     this.router.navigate(['/login']);
@@ -103,6 +112,6 @@ export interface UserDocument {
   types: string;
   favpoke: string;
   biograph: string;
-  isAdmin: string;
-  isHunter: string;
+  isAdmin: boolean;
+  isHunter: boolean;
 }

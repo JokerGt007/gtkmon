@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "emailVerification", component: EmailVerificationComponent, canActivate: [AuthGuard]},
   {path: "capture", component: CaptureComponent, canActivate: [AuthGuard]},
-  {path: "listuser", component: ListuserComponent, canActivate: [AdminGuard]},
+  {path: "listuser", component: ListuserComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "**", component: HomeComponent}
 ];
 

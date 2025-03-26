@@ -68,3 +68,27 @@ textarea::placeholder {
     2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
     -3px 0px 1px #3466af, 3px 0px 1px #3466af;
 }
+
+select {
+  width: 100%;
+  padding: 1em;
+  border-radius: 1em;
+  margin-bottom: 0.5em;
+  outline: none;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  background-color: rgba(214, 7, 7, 0.2); /* Fundo semitransparente */
+  color: rgb(255, 255, 255); /* Cor do texto */
+  backdrop-filter: blur(8px); /* Efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(8px); /* Suporte para Safari */
+}
+
+select::placeholder {
+  color: white; /* Cor do placeholder */
+  opacity: 1; /* Opacidade máxima */
+}
+
+select option {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+}
