@@ -18,6 +18,7 @@ import { EmailVerificationComponent } from './pages/email-verification/email-ver
 import { ProfileComponent } from './tools/profile/profile.component';
 import { CaptureComponent } from './pages/capture/capture.component';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
+import { ListuserComponent } from './pages/listuser/listuser.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
     EmailVerificationComponent,
     ProfileComponent,
     CaptureComponent,
+    ListuserComponent,
   ],
   imports: [
     BrowserModule,
