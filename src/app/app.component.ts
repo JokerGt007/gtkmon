@@ -78,10 +78,8 @@ export class AppComponent {
           const isAdmin = Boolean(AppComponent.userDocument.isAdmin);
           
           if (isAdmin) {
-            console.log("Usuário é admin, redirecionando para listuser...");
             this.router.navigate(["listuser"]);
           } else {
-            console.log("Usuário comum, redirecionando para capture...");
             this.router.navigate(["capture"]);
           }
         }
