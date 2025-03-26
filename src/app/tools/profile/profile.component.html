@@ -1,17 +1,29 @@
 <div id="profile" [ngClass]="{'active': show, 'idle': !show}">
     <div id="profile-content">
-        <input #usernameInput placeholder="Hunter Username">
-        
-        <!-- Seleção de Tipo -->
-        <select #typeInput placeholder="Fav Type">
-            <option value="" disabled selected>Fav Type</option>
-            <!-- Preenche as opções com os tipos de Pokémon que vieram do Firestore -->
-            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-        </select>
-        
-        <input #pokeInput placeholder="Fav Pokemon">
-        <textarea #bioInput placeholder="Bio"></textarea>
-        
-        <button (click)="onContinueClick(usernameInput, typeInput, pokeInput, bioInput)" mat-flat-button class="button-continue">Continue</button>
+      <!-- Campo para inserir o nome de usuário -->
+      <input #usernameInput placeholder="Hunter Username">
+  
+      <!-- Seleção de Tipo -->
+      <select #typeInput placeholder="Fav Type">
+        <option value="" disabled selected>Fav Type</option>
+        <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+      </select>
+  
+      <!-- Campo de pesquisa para buscar o Pokémon favorito -->
+      <input #pokeSearchInput 
+             placeholder="Search for Pokemon" 
+             [(ngModel)]="pokeSearchText" 
+             (input)="onPokeSearchChange(pokeSearchText)" />
+  
+      <!-- Select para escolher o Pokémon favorito -->
+      <select #pokeInput [(ngModel)]="selectedPokemon">
+        <option value="" disabled selected>Select a Pokémon</option>
+        <option *ngFor="let poke of pokeOptions" [value]="poke">{{ poke }}</option>
+      </select>
+  
+      <textarea #bioInput placeholder="Bio"></textarea>
+      
+      <button (click)="onContinueClick(usernameInput, typeInput, pokeInput, bioInput)" mat-flat-button class="button-continue">Continue</button>
     </div>
-</div>
+  </div>
+  

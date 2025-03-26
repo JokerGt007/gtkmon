@@ -19,6 +19,8 @@ import { ProfileComponent } from './tools/profile/profile.component';
 import { CaptureComponent } from './pages/capture/capture.component';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { ListuserComponent } from './pages/listuser/listuser.component';
+import { FormsModule } from '@angular/forms';  // Importando o FormsModule
+import { HttpClientModule } from '@angular/common/http';  // Importando HttpClientModule
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ListuserComponent } from './pages/listuser/listuser.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,
