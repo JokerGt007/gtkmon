@@ -148,3 +148,50 @@ body.dark-mode .card {
   background-color: #222 !important;
   color: white !important;
 }
+
+/* Estilo do menu suspenso */
+mat-menu {
+  background-color: #444; /* Cor de fundo do menu */
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para os itens do menu */
+mat-menu mat-menu-item {
+  color: #fff;
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #444;
+  transition: background-color 0.3s ease;
+}
+
+mat-menu mat-menu-item:hover {
+  background-color: #575757; /* Cor de hover para os itens do menu */
+}
+
+/* Estilo para o botão que aciona o menu */
+span[matMenuTriggerFor] {
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+span[matMenuTriggerFor]:hover {
+  background-color: #444;
+}
+
+/* Animação do menu */
+mat-menu {
+  transform: scale(0);
+  animation: menuOpen 0.3s forwards;
+}
+
+@keyframes menuOpen {
+  to {
+    transform: scale(1);
+  }
+}

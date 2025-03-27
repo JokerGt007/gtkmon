@@ -1,20 +1,29 @@
 <div id="nav-bar">
     <div id="nav-bar-content">
-        <div id="nav-bar-left">
-            <!-- <div id="icon"><img src="favicon.ico"></div> -->
-            <div (click)="onHomeClick()" style="font-size: 1.5em;" class="nav-bar-items">Gtkmon</div>
+      <div id="nav-bar-left">
+        <div (click)="onHomeClick()" style="font-size: 1.5em;" class="nav-bar-items">Gtkmon</div>
+      </div>
+      <div id="nav-bar-right">
+        <button mat-button (click)="toggleDarkMode()">
+          <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_2' }}</mat-icon>
+        </button>
+        <div *ngIf="!loggedIn()" (click)="onLoginClick()" class="nav-bar-items">Login</div>
+        <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items">
+          <!-- Nome de usuário que vai acionar o menu diretamente ao ser clicado -->
+          <span [matMenuTriggerFor]="userMenu">{{ getUsername() }}</span>
+    
+          <!-- Menu que será mostrado ao clicar no nome de usuário -->
+          <mat-menu #userMenu="matMenu">
+            <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/listuser']">List Users</button>
+            <button mat-menu-item *ngIf="isHunter()" [routerLink]="['/capture']">Capture Pokémon</button>
+          </mat-menu>
         </div>
-        <div id="nav-bar-right">
-            <button mat-button (click)="toggleDarkMode()">
-                <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_2' }}</mat-icon>
-            </button>
-            <div *ngIf="!loggedIn()" (click)="onLoginClick()" class="nav-bar-items">Login</div>
-            <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items">{{getUsername()}}</div>
-            <div *ngIf="loggedIn()" (click)="onLogoutClick()" class="nav-bar-items">Logout</div>
-        </div>
+        <div *ngIf="loggedIn()" (click)="onLogoutClick()" class="nav-bar-items">Logout</div>
+      </div>
     </div>
-</div>
-
+  </div>
+  
+  
 <router-outlet></router-outlet>
 
 <app-profile *ngIf="loggedIn() && !userHasProfile" [show]="loggedIn() && !userHasProfile"></app-profile>

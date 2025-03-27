@@ -64,6 +64,16 @@ export class AppComponent {
     } catch (err) {}
   }
 
+    // Verifica se o usuário é admin
+    isAdmin() {
+      return AppComponent.userDocument?.isAdmin === true;
+    }
+  
+    // Verifica se o usuário é hunter
+    isHunter() {
+      return AppComponent.userDocument?.isHunter === true;
+    }
+
   getUserProfile() {
     this.firestore.listenToDocument({
       name: "Getting Document",

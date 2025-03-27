@@ -23,6 +23,7 @@ import { ListUserComponent } from './pages/listuser/listuser.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // <-- Precisa importar também
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'; // <-- Precisa
     MatIconModule,
     MatSnackBarModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [
     AuthService,
