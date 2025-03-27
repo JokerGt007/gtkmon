@@ -18,29 +18,27 @@ export class AppComponent {
   userHasProfile = true;
   private static userDocument: UserDocument | null = null;
   isLoggedIn = false;
+
   constructor(private router: Router) {
+    // Verifica o estado do tema no localStorage ao iniciar a página
+    const storedTheme = localStorage.getItem('dark-mode');
+    this.isDarkMode = storedTheme === 'true'; // 'true' ou 'false' como string
+    this.updateTheme(); // Aplica o tema salvo
+    
+    // Lógica de autenticação
     this.auth.listenToSignInStateChanges(
       user => {
-        this.auth.checkSignInState(
-          {
-            whenSignedIn: user => {
-
-
-            },
-            whenSignedOut: user => {
-              
-            },
-            whenSignedInAndEmailNotVerified: user => {
-              this.router.navigate(["emailVerification"])
-            },
-            whenSignedInAndEmailVerified: user => {
-              this.getUserProfile();
-            },
-            whenChanged: user => {
-              
-            }
-          }
-        );
+        this.auth.checkSignInState({
+          whenSignedIn: user => {},
+          whenSignedOut: user => {},
+          whenSignedInAndEmailNotVerified: user => {
+            this.router.navigate(["emailVerification"]);
+          },
+          whenSignedInAndEmailVerified: user => {
+            this.getUserProfile();
+          },
+          whenChanged: user => {}
+        });
       }
     );
   }
@@ -54,11 +52,12 @@ export class AppComponent {
   updateTheme() {
     if (this.isDarkMode) {
       document.body.classList.add('dark-mode');
+      console.log("Dark mode ativado"); // Verifique se esse log aparece
     } else {
       document.body.classList.remove('dark-mode');
+      console.log("Dark mode desativado");
     }
-  }  
-
+  }
   getUsername() {
     try {
       return AppComponent.userDocument?.publicName;
@@ -86,7 +85,6 @@ export class AppComponent {
       }
     });
   }
-  
 
   onLoginClick() {
     this.router.navigate(['/login']);

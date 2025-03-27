@@ -80,18 +80,18 @@
   cursor: pointer; /* Garantir que a logo seja clicável */
 }
 
-/* Estilos para o Dark Mode */
-.dark-mode {
-  background-color: #121212 !important; /* Fundo escuro */
-  color: white !important; /* Texto branco */
+/* Garantindo que o fundo e a cor do texto sejam alterados */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
 }
 
-/* Aplicando Dark Mode no Navbar */
+/* Estilos para o Dark Mode no Navbar */
 .dark-mode #nav-bar {
   background-color: #1e1e1e !important;
 }
 
-/* Estilos para os botões no modo escuro */
+/* Estilos para os itens da barra de navegação no modo escuro */
 .dark-mode .nav-bar-items {
   color: white !important;
 }
@@ -100,6 +100,7 @@
   color: #f5c518 !important; /* Amarelo no hover */
 }
 
+/* Ícones no modo escuro */
 .dark-mode #nav-bar-right button mat-icon {
   color: white !important;
 }
@@ -142,6 +143,7 @@
   color: white !important;
 }
 
+/* Cards no modo escuro */
 body.dark-mode .card {
   background-color: #222 !important;
   color: white !important;

@@ -1,5 +1,5 @@
- /* You can add global styles to this file, and also import other style files */
- @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+  /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
 @font-face {
@@ -9,6 +9,171 @@
     font-style: normal;
   }
   
-  body {
-    font-family: 'Fruktur', cursive; /* Aplica a fonte no corpo do site */
-  }
+body {
+  font-family: 'Fruktur', cursive; /* Aplica a fonte no corpo do site */
+}
+
+/* Estilos para o Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Estilos para os itens da barra de navegação no modo escuro */
+.dark-mode .nav-bar-items {
+  color: white !important;
+}
+
+.dark-mode .nav-bar-items:hover {
+  color: #f5c518 !important; /* Amarelo no hover */
+}
+
+/* Ícones no modo escuro */
+.dark-mode #nav-bar-right button mat-icon {
+  color: white !important;
+}
+
+/* Aplicando Dark Mode aos inputs e placeholders */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: #2a2a2a !important;
+  color: white !important;
+  border: 1px solid #444 !important;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #bbb !important;
+}
+
+/* Botões no modo escuro */
+.dark-mode button {
+  background-color: #333 !important;
+  color: white !important;
+  border: 1px solid #555 !important;
+}
+
+.dark-mode button:hover {
+  background-color: #444 !important;
+}
+
+/* Links e ícones no modo escuro */
+.dark-mode a {
+  color: #f5c518 !important;
+}
+
+.dark-mode a:hover {
+  color: #ffd700 !important;
+}
+
+.dark-mode mat-icon {
+  color: white !important;
+}
+
+/* Cards no modo escuro */
+body.dark-mode .card {
+  background-color: #222 !important;
+  color: white !important;
+}
+
+/* Cartões no modo escuro */
+.dark-mode .user-card {
+  background-color: rgba(33, 33, 33, 0.8); /* Cor mais escura para o fundo do cartão */
+  color: #fff; /* Texto branco para contraste */
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1); /* Sombra mais sutil */
+}
+
+/* Título no dark mode */
+.dark-mode h2 {
+  color: #f5c518; /* Amarelo para o título no dark mode */
+}
+
+/* Cor do seletor de role no dark mode */
+.dark-mode .role-select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* Botão de atualização no dark mode */
+.dark-mode .update-btn {
+  background-color: #ea580c;
+  color: white;
+}
+
+.dark-mode .update-btn:hover {
+  background-color: #f97316;
+}
+
+/* Estilos para o Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Personalização do título no Dark Mode */
+.dark-mode .title-font {
+  color: #ffffff !important; /* Amarelo para o título no Dark Mode */
+}
+
+.dark-mode .title-form {
+  color: #ffffff !important; /* Amarelo para o título no Dark Mode */
+}
+
+.dark-mode h2 {
+  color: #f5c518 !important; /* Amarelo para o título */
+}
+
+/* Fontes dentro de .user-info em Dark Mode */
+.dark-mode .user-info p {
+  font-family: 'Fruktur', cursive !important; /* Garantir que a fonte seja aplicada */
+  color: white !important; /* Texto branco no modo escuro */
+}
+
+/* Cartões de usuário no Dark Mode */
+.dark-mode .user-card {
+  background-color: rgba(33, 33, 33, 0.8) !important; /* Cor de fundo mais escura */
+  color: #fff !important; /* Texto branco */
+  box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1) !important; /* Sombra mais sutil */
+}
+
+/* Ajustes no seletor de role no Dark Mode */
+.dark-mode .role-select {
+  background-color: #333 !important;
+  color: white !important;
+  border: 1px solid #444 !important;
+}
+
+/* Estilos do botão de atualização no Dark Mode */
+.dark-mode .update-btn {
+  background-color: #ea580c !important;
+  color: white !important;
+}
+
+.dark-mode .update-btn:hover {
+  background-color: #f97316 !important;
+}
+
+/* Aplicando Dark Mode aos inputs e placeholders */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select {
+  background-color: #2a2a2a !important;
+  color: white !important;
+  border: 1px solid #444 !important;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #bbb !important;
+}
+
+/* Modificações adicionais no estilo de links */
+.dark-mode a {
+  color: #f5c518 !important;
+}
+
+.dark-mode a:hover {
+  color: #ffd700 !important;
+}

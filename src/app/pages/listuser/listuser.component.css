@@ -1,81 +1,108 @@
 /* src/app/components/listuser/listuser.component.css */
 
-/* Aplicando a imagem de fundo no container da página */
-.list-page {
-    background-image: url('src/assets/listuser.png'); /* Caminho da imagem de fundo */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh; /* Garante que a imagem ocupe pelo menos toda a altura da tela */
-    padding: 20px;
-}
 
-/* Ajustando o conteúdo da página */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente para contraste */
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo do título */
-h2 {
-    font-family: "PokemonFont", sans-serif;
-    margin-right: 1em;
-    margin-bottom: 1.5rem;
-    color: #f3ba34;
-    font-weight: bold;
+/* Personalizando o título com uma fonte específica */
+.title-font {
+    font-family: 'PokemonFont', sans-serif; /* Fonte personalizada para o título */
+    color: #f3ba34; /* Amarelo para o título */
     text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
       2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
       -3px 0px 1px #3466af, 3px 0px 1px #3466af;
 }
 
-/* Estilo dos cartões dos usuários com maior transparência */
+/* Personalizando os inputs com outra fonte */
+.input-font {
+    font-family: 'Fruktur', cursive; /* Outra fonte para o campo de entrada */
+}
+
+/* Estilos gerais para a página */
+.list-page {
+    background-image: url('src/assets/listuser.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem de linha quando necessário */
+    gap: 20px; /* Espaçamento entre os cards */
+    justify-content: flex-start; /* Alinha os cards à esquerda, mas você pode usar 'space-between' para espalhá-los */
+}
+
+/* Estilos do título */
+h2 {
+    margin-right: 1em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.title-form{
+    font-family: 'PokemonFont', sans-serif; /* Fonte personalizada para o título */
+    color: #f3ba34; /* Amarelo para o título */
+    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
+      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
+      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+}
+
+.user-info p {
+    font-family: 'Fruktur', cursive; /* Fonte personalizada para as entradas */
+    text-transform: capitalize; /* Força a primeira letra a ser maiúscula */
+}
+/* Personalização dos cards dos usuários */
 .user-card {
-    background-color: rgba(255, 255, 255, 0.5); /* Aumentando a transparência (0.5) */
-    color: #333; /* Texto escuro dentro do card */
+    color: #333;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 500px; /* Define a largura máxima do cartão */
+    flex: 1 1 30%; /* Ajusta para ocupar 30% da largura da linha, o que dá 3 por linha */
+    margin: 10px; /* Espaço entre os cards */
 }
 
-.user-card:hover {
-    transform: scale(1.02); /* Efeito de aumento no card */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+/* Media query para telas médias (tela até 768px) */
+@media (max-width: 768px) {
+    .user-card {
+        flex: 1 1 45%; /* Para telas médias, dois cards por linha */
+    }
 }
 
-.user-info p {
-    margin: 10px 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
+/* Media query para telas pequenas (tela até 480px) */
+@media (max-width: 480px) {
+    .user-card {
+        flex: 1 1 100%; /* Para telas pequenas, os cards ocupam toda a largura */
+    }
 }
 
 /* Estilo do seletor de role */
 .role-select {
-    width: 180px;
-    font-size: 1rem;
+    width: 150px; /* Reduzi a largura do seletor para 150px */
+    font-size: 0.9rem; /* Diminui o tamanho da fonte */
     color: #333;
     background-color: #fff;
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 6px 10px; /* Ajuste no padding para reduzir o tamanho */
     border-radius: 5px;
 }
 
 /* Estilo do botão de atualização */
 .update-btn {
-    background-color: #f97316; /* Laranja */
+    background-color: #f97316;
     border: none;
     transition: background-color 0.3s ease;
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 8px 15px; /* Reduzido o padding para diminuir o tamanho do botão */
+    font-size: 0.9rem; /* Diminui o tamanho da fonte para se ajustar melhor ao espaço */
     border-radius: 5px;
+    max-width: 300px; /* Força o botão a ter no máximo 300px de largura */
+    width: 100%; /* Faz o botão se ajustar à largura do seu contêiner */
+    align-items: center;
 }
 
 .update-btn:hover {
-    background-color: #ea580c; /* Laranja mais escuro ao passar o mouse */
+    background-color: #ea580c;
 }
 
 .action-buttons {
@@ -83,16 +110,4 @@ h2 {
     gap: 20px;
     justify-content: flex-end;
     align-items: center;
-}
-
-.action-buttons select,
-.action-buttons button {
-    margin-left: 10px;
-}
-
-/* Melhorando o padding e sombra do container */
-.container {
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
