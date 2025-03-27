@@ -1,1 +1,31 @@
-<p>listuser works!</p>
+<!-- src/app/components/listuser/listuser.component.html -->
+<div class="list-page">
+    <div class="container">
+      <h2 class="text-xl font-bold mb-6 text-center text-gray-700">Usuários Cadastrados</h2>
+    
+      <div *ngFor="let user of users" class="user-card mb-6 p-6 bg-white rounded-lg shadow-lg">
+        <div class="flex justify-between items-center">
+          <div class="user-info">
+            <p><strong>Nome:</strong> {{ user.publicName }}</p>
+            <p><strong>Pokémon Favorito:</strong> {{ user.favpoke }}</p>
+            <p><strong>Tipo Favorito:</strong> {{ user.favtype }}</p>
+            <p><strong>Biografia:</strong> {{ user.biograph }}</p>
+          </div>
+          <div class="action-buttons flex gap-4 items-center">
+            <!-- Seletor de Role -->
+            <select [(ngModel)]="user.newRole" class="role-select p-3 border rounded-md">
+              <option value="admin">Administrador</option>
+              <option value="hunter">Caçador</option>
+            </select>
+            <button
+              (click)="updateUserRole(user.id, user.newRole)"
+              class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md"
+            >
+              Atualizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,98 @@
+/* src/app/components/listuser/listuser.component.css */
+
+/* Aplicando a imagem de fundo no container da página */
+.list-page {
+    background-image: url('src/assets/listuser.png'); /* Caminho da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Garante que a imagem ocupe pelo menos toda a altura da tela */
+    padding: 20px;
+}
+
+/* Ajustando o conteúdo da página */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente para contraste */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do título */
+h2 {
+    font-family: "PokemonFont", sans-serif;
+    margin-right: 1em;
+    margin-bottom: 1.5rem;
+    color: #f3ba34;
+    font-weight: bold;
+    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
+      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
+      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+}
+
+/* Estilo dos cartões dos usuários com maior transparência */
+.user-card {
+    background-color: rgba(255, 255, 255, 0.5); /* Aumentando a transparência (0.5) */
+    color: #333; /* Texto escuro dentro do card */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-card:hover {
+    transform: scale(1.02); /* Efeito de aumento no card */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+.user-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Estilo do seletor de role */
+.role-select {
+    width: 180px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo do botão de atualização */
+.update-btn {
+    background-color: #f97316; /* Laranja */
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.update-btn:hover {
+    background-color: #ea580c; /* Laranja mais escuro ao passar o mouse */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.action-buttons select,
+.action-buttons button {
+    margin-left: 10px;
+}
+
+/* Melhorando o padding e sombra do container */
+.container {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}

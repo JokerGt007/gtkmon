@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FirebaseTSApp } from 'firebasets/firebasetsapp/firebaseTSApp';
+import { FirebaseTSApp } from 'firebasets/firebasetsApp/firebaseTSApp';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './tools/login/login.component';
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service'; // <-- Adicione isso
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireModule } from '@angular/fire/';
+import { AngularFireModule } from '@angular/fire';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,10 +19,10 @@ import { EmailVerificationComponent } from './pages/email-verification/email-ver
 import { ProfileComponent } from './tools/profile/profile.component';
 import { CaptureComponent } from './pages/capture/capture.component';
 import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
-import { ListuserComponent } from './pages/listuser/listuser.component';
-import { FormsModule } from '@angular/forms';  // Importando o FormsModule
-import { HttpClientModule } from '@angular/common/http';  // Importando HttpClientModule
-
+import { ListUserComponent } from './pages/listuser/listuser.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFirestoreModule } from '@angular/fire/firestore'; // <-- Precisa importar também
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';  // Importando HttpClie
     EmailVerificationComponent,
     ProfileComponent,
     CaptureComponent,
-    ListuserComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';  // Importando HttpClie
     BrowserAnimationsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // <-- Isso estava faltando
     MatButtonModule,
     MatCardModule,
     MatIconModule,
@@ -48,11 +50,12 @@ import { HttpClientModule } from '@angular/common/http';  // Importando HttpClie
   ],
   providers: [
     AuthService,
-    FirebaseTSAuth
+    FirebaseTSAuth,
+    UserService // <-- Registra aqui também
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor() {
     FirebaseTSApp.init(environment.firebaseConfig);
   }
