@@ -1,0 +1,87 @@
+.profile-edit-page {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Vídeo de fundo */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    
+}
+/* Título */
+.title-font {
+    font-family: 'PokemonFont', sans-serif;
+    color: #f3ba34;
+    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
+      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
+      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+}
+
+/* Inputs */
+.input-font {
+    font-family: 'Fruktur', cursive;
+}
+
+/* Card */
+.user-card {
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 3%;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Inputs */
+.input-field {
+    font-size: 1rem;
+    background: #fff;
+    margin-left: auto;
+    margin-top: 5px;    /* espaçamento entre label e input */
+    margin-bottom: 15px; /* espaçamento entre os inputs */
+    width: 100%; /* melhor para responsividade */
+    padding: 8px; /* um espacinho interno */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Labels */
+.title-form {
+    display: block; /* faz o label ficar numa linha só */
+    margin-bottom: 5px; /* separa do input */
+    font-family: 'PokemonFont', sans-serif;
+    color: #f3ba34;
+    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
+      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
+      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+}
+/* Botão */
+.update-btn {
+    background-color: #f97316;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update-btn:hover {
+    background-color: #ea580c;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .user-card {
+        padding: 15px;
+    }
+}

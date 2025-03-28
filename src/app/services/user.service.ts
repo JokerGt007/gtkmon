@@ -31,4 +31,16 @@ export class UserService {
       isHunter: isHunter
     });
   }
+
+  getUser(id: string): Observable<User | undefined> {
+    return this.firestore.collection<User>('Users').doc(id).valueChanges();
+  }
+
+  updateUserProfile(id: string, data: Partial<User>): Promise<void> {
+    // impede alterar admin e hunter
+    delete data.isAdmin;
+    delete data.isHunter;
+
+    return this.firestore.collection('Users').doc(id).update(data);
+  }
 }

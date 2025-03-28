@@ -52,10 +52,8 @@ export class AppComponent {
   updateTheme() {
     if (this.isDarkMode) {
       document.body.classList.add('dark-mode');
-      console.log("Dark mode ativado"); // Verifique se esse log aparece
     } else {
       document.body.classList.remove('dark-mode');
-      console.log("Dark mode desativado");
     }
   }
   getUsername() {

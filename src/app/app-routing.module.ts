@@ -7,12 +7,14 @@ import { CaptureComponent } from './pages/capture/capture.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ListUserComponent } from './pages/listuser/listuser.component';
 import { AdminGuard } from './guards/admin.guard';
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "login", component: LoginComponent},
   {path: "emailVerification", component: EmailVerificationComponent, canActivate: [AuthGuard]},
   {path: "capture", component: CaptureComponent, canActivate: [AuthGuard]},
+  {path: "profile", component: ProfileEditComponent, canActivate: [AuthGuard]},
   {path: "listuser", component: ListUserComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "**", component: HomeComponent}
 ];
