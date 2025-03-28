@@ -16,6 +16,7 @@
           <mat-menu #userMenu="matMenu">
             <button mat-menu-item [routerLink]="['/profile']">Meu Perfil</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/listuser']">Usuários</button>
+            <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/pokeregister']">Cadastrar Pokemon</button>
             <button mat-menu-item *ngIf="isHunter()" [routerLink]="['/capture']">Capture Pokémon</button>
           </mat-menu>
         </div>

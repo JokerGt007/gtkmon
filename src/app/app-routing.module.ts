@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ListUserComponent } from './pages/listuser/listuser.component';
 import { AdminGuard } from './guards/admin.guard';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "capture", component: CaptureComponent, canActivate: [AuthGuard]},
   {path: "profile", component: ProfileEditComponent, canActivate: [AuthGuard]},
   {path: "listuser", component: ListUserComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: "pokeregister", component: PokemonRegisterComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "**", component: HomeComponent}
 ];
 

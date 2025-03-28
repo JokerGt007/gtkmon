@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // <-- Precisa importar também
 import { MatMenuModule } from '@angular/material/menu';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
+import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
     CaptureComponent,
     ListUserComponent,
     ProfileEditComponent,
+    PokemonRegisterComponent,
   ],
   imports: [
     BrowserModule,
