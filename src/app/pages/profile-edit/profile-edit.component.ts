@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, User } from 'src/app/services/user.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertService } from 'src/app/services/alert.service';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
 
 @Component({
   selector: 'app-profile-edit',
@@ -14,16 +16,22 @@ export class ProfileEditComponent implements OnInit {
     favpoke: '',
     favtype: '',
     biograph: '',
-    isAdmin: false, // mesmo que não use, mantém para evitar erros de tipo
+    isAdmin: false,
     isHunter: false
   };
 
+  types: string[] = [];
+  pokeSearchText: string = '';
+  pokeOptions: string[] = [];
   uid: string | null = null;
+
+  firestore = new FirebaseTSFirestore();
 
   constructor(
     private userService: UserService,
     private afAuth: AngularFireAuth,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private pokemonService: PokemonService
   ) {}
 
   ngOnInit(): void {
@@ -31,13 +39,13 @@ export class ProfileEditComponent implements OnInit {
       if (user) {
         this.uid = user.uid;
         this.loadUserData();
+        this.loadPokemonTypes();
       }
     });
   }
 
   loadUserData(): void {
     if (!this.uid) return;
-
     this.userService.getUser(this.uid).subscribe(user => {
       if (user) {
         this.userData = {
@@ -52,10 +60,35 @@ export class ProfileEditComponent implements OnInit {
     });
   }
 
+  loadPokemonTypes() {
+    this.firestore.getCollection({
+      path: ["Types"],
+      where: [],
+      onComplete: result => {
+        this.types = result.docs.map(doc => doc.data().name);
+      },
+      onFail: err => console.error("Erro ao carregar tipos:", err)
+    });
+  }
+
+  onPokeSearchChange(searchText: string) {
+    if (searchText.length < 1) {
+      this.pokeOptions = [];
+      return;
+    }
+    this.pokemonService.searchPokemon(searchText).subscribe({
+      next: (allResults) => {
+        this.pokeOptions = allResults.map(pokemon => pokemon.name);
+      },
+      error: (err) => {
+        console.error('Erro ao buscar Pokémons', err);
+      }
+    });
+  }
+
   save(): void {
     if (!this.uid) return;
 
-    // só envia os campos editáveis
     const { publicName, favpoke, favtype, biograph } = this.userData;
 
     this.userService.updateUserProfile(this.uid, { publicName, favpoke, favtype, biograph })

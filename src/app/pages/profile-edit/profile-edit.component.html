@@ -1,42 +1,48 @@
 <div class="profile-edit-page">
-    <!-- Vídeo de fundo -->
-    <video autoplay muted loop class="bg-video">
-      <source src="assets/charizard.mp4" type="video/mp4">
-    </video>  
-    <div class="container">
-      <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Editar Perfil</h2>
-  
-      <div class="user-card p-6 bg-white rounded-lg shadow-lg">
-        <div class="user-info space-y-4">
-  
-          <div>
-            <label class="title-form">Nome Público:</label>
-            <input [(ngModel)]="userData.publicName" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Nome público">
-          </div>
-  
-          <div>
-            <label class="title-form">Pokémon Favorito:</label>
-            <input [(ngModel)]="userData.favpoke" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Pokémon favorito">
-          </div>
-  
-          <div>
-            <label class="title-form">Tipo Favorito:</label>
-            <input [(ngModel)]="userData.favtype" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Tipo favorito">
-          </div>
-  
-          <div>
-            <label class="title-form">Biografia:</label>
-            <textarea [(ngModel)]="userData.biograph" class="input-field input-font w-full p-2 border rounded resize-none" rows="4" placeholder="Sua biografia..."></textarea>
-          </div>
-  
-          <div class="action-buttons flex justify-end">
-            <button (click)="save()" class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md">
-              Salvar Alterações
-            </button>
-          </div>
-  
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/charizard.mp4" type="video/mp4">
+  </video>  
+
+  <div class="container">
+    <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Editar Perfil</h2>
+
+    <div class="user-card p-6 bg-white rounded-lg shadow-lg">
+      <div class="user-info space-y-4">
+
+        <div>
+          <label class="title-form">Nome Público:</label>
+          <input [(ngModel)]="userData.publicName" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Nome público">
         </div>
+
+        <div>
+          <label class="title-form">Pokémon Favorito:</label>
+          <input [(ngModel)]="pokeSearchText" (input)="onPokeSearchChange(pokeSearchText)" class="input-field input-font w-full p-2 border rounded" placeholder="Buscar Pokémon">
+          <select [(ngModel)]="userData.favpoke" class="input-field input-font w-full p-2 border rounded">
+            <option value="" disabled>Selecione um Pokémon</option>
+            <option *ngFor="let poke of pokeOptions" [value]="poke">{{ poke }}</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="title-form">Tipo Favorito:</label>
+          <select [(ngModel)]="userData.favtype" class="input-field input-font w-full p-2 border rounded">
+            <option value="" disabled>Selecione um Tipo</option>
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="title-form">Biografia:</label>
+          <textarea [(ngModel)]="userData.biograph" class="input-field input-font w-full p-2 border rounded resize-none" rows="4" placeholder="Sua biografia..."></textarea>
+        </div>
+
+        <div class="action-buttons flex justify-end">
+          <button (click)="save()" class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md">
+            Salvar Alterações
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
-  
+</div>
