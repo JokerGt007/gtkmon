@@ -85,3 +85,11 @@
         padding: 15px;
     }
 }
+
+.pokemon-image {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    border-radius: 10px;
+    object-fit: contain;
+  }

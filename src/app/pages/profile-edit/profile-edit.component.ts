@@ -23,6 +23,7 @@ export class ProfileEditComponent implements OnInit {
   types: string[] = [];
   pokeSearchText: string = '';
   pokeOptions: string[] = [];
+  pokemonImage: string = '';  // Variável para armazenar a URL da imagem
   uid: string | null = null;
 
   firestore = new FirebaseTSFirestore();
@@ -56,6 +57,7 @@ export class ProfileEditComponent implements OnInit {
           isAdmin: user.isAdmin || false,
           isHunter: user.isHunter || false
         };
+        this.loadPokemonImage(user.favpoke);  // Carregar a imagem do Pokémon favorito ao carregar os dados
       }
     });
   }
@@ -86,11 +88,20 @@ export class ProfileEditComponent implements OnInit {
     });
   }
 
+  loadPokemonImage(pokemonName: string) {
+    if (pokemonName) {
+      this.pokemonService.getPokemonImage(pokemonName).subscribe(imageUrl => {
+        this.pokemonImage = imageUrl;  // Armazena a URL da imagem para exibição
+      });
+    }
+  }
+
   save(): void {
     if (!this.uid) return;
 
     const { publicName, favpoke, favtype, biograph } = this.userData;
 
+    // Atualizar o perfil no Firebase
     this.userService.updateUserProfile(this.uid, { publicName, favpoke, favtype, biograph })
       .then(() => this.alertService.show('Perfil atualizado!', '', 3000))
       .catch(err => this.alertService.show('Erro ao atualizar perfil', '', 3000));

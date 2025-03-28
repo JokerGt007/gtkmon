@@ -10,17 +10,22 @@
       <div class="user-info space-y-4">
 
         <div>
-          <label class="title-form">Nome Público:</label>
+          <label class="title-form">Username:</label>
           <input [(ngModel)]="userData.publicName" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Nome público">
         </div>
 
         <div>
           <label class="title-form">Pokémon Favorito:</label>
           <input [(ngModel)]="pokeSearchText" (input)="onPokeSearchChange(pokeSearchText)" class="input-field input-font w-full p-2 border rounded" placeholder="Buscar Pokémon">
-          <select [(ngModel)]="userData.favpoke" class="input-field input-font w-full p-2 border rounded">
+          <select [(ngModel)]="userData.favpoke" class="input-field input-font w-full p-2 border rounded" (change)="loadPokemonImage(userData.favpoke)">
             <option value="" disabled>Selecione um Pokémon</option>
             <option *ngFor="let poke of pokeOptions" [value]="poke">{{ poke }}</option>
           </select>
+        </div>
+
+        <div *ngIf="pokemonImage">
+          <label class="title-form">Imagem do Pokémon:</label>
+          <img [src]="pokemonImage" alt="Imagem do Pokémon Favorito" class="pokemon-image w-32 h-32 object-cover rounded-full mx-auto">
         </div>
 
         <div>

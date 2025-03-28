@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'; 
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,11 @@ export class PokemonService {
         error: err => observer.error(err),
       });
     });
+  }
+
+  getPokemonImage(pokemonName: string): Observable<string> {
+    return this.http.get(`${this.apiUrl}${pokemonName}`).pipe(
+      map((details: any) => details.sprites.front_default) // Retorna a URL da imagem
+    );
   }
 }
