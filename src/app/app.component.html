@@ -14,9 +14,9 @@
     
           <!-- Menu que será mostrado ao clicar no nome de usuário -->
           <mat-menu #userMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/profile']">Meu Perfil</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/listuser']">Usuários</button>
             <button mat-menu-item *ngIf="isHunter()" [routerLink]="['/capture']">Capture Pokémon</button>
-            <button mat-menu-item [routerLink]="['/profile']">Meu Perfil</button>
           </mat-menu>
         </div>
         <div *ngIf="loggedIn()" (click)="onLogoutClick()" class="nav-bar-items">Logout</div>
