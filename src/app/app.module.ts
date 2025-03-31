@@ -26,6 +26,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'; // <-- Precisa
 import { MatMenuModule } from '@angular/material/menu';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
+import { PokedexComponent } from './pages/pokedex/pokedex.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-regis
     ListUserComponent,
     ProfileEditComponent,
     PokemonRegisterComponent,
+    PokedexComponent,
   ],
   imports: [
     BrowserModule,

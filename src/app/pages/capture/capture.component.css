@@ -1,16 +1,9 @@
-#page-landing {
-    position: fixed;
+.bg-video {
+    position: absolute;
     top: 0;
-    right: 0;
-    height: 100vh;
-    width: 100vw; 
-    background-image: url(src/assets/capture.png);
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat; 
-    transition-duration: .5s;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }

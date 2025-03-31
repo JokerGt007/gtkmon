@@ -1,12 +1,15 @@
 <!-- src/app/components/listuser/listuser.component.html -->
 <div class="list-page">
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/gengaruser.mp4" type="video/mp4">
+  </video>    
     <div class="container">
       <!-- Título com classe customizada -->
       <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Usuários Cadastrados</h2>
   
       <!-- Contêiner de cards -->
       <div class="cards-container">
-        <div *ngFor="let user of users" class="user-card mb-6 p-6 bg-white rounded-lg shadow-lg">
+        <div *ngFor="let user of users" class="user-card mb-6 p-6">
           <div class="flex justify-between items-center">
             <div class="user-info">
               <p><strong class="title-form">Nome:</strong> {{ user.publicName }}</p>

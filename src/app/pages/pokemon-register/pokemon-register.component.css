@@ -22,7 +22,7 @@
     text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
       2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
       -3px 0px 1px #3466af, 3px 0px 1px #3466af;
-    margin-top: 3%;
+    margin-top: 2.5%;
 }
 
 /* Inputs */
@@ -39,7 +39,7 @@
     max-width: 600px;
     margin: 0 auto;
     margin-top: 3%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgb(255 255 255 / 42%);
 }
 
 /* Inputs */
