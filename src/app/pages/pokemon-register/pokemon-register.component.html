@@ -1,46 +1,64 @@
 <div class="pokemon-register-page">
-    <video autoplay muted loop class="bg-video">
-      <source src="assets/gengar.mp4" type="video/mp4">
-    </video>  
-  
-    <div class="container">
-      <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Cadastro de Pokémon</h2>
-  
-      <div class="user-card p-6 bg-white rounded-lg shadow-lg">
-        <div class="user-info space-y-4">
-  
-          <div>
-            <label class="title-form">Nome do Pokémon:</label>
-            <input [(ngModel)]="pokemonData.name" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Nome do Pokémon">
-          </div>
-  
-          <div>
-            <label class="title-form">Link da Imagem:</label>
-            <input [(ngModel)]="pokemonData.imageLink" class="input-field input-font w-full p-2 border rounded" type="text" placeholder="Link da imagem">
-          </div>
-  
-          <div>
-            <label class="title-form">Porcentagem de Chance de Captura:</label>
-            <input [(ngModel)]="pokemonData.captureChance" 
-                   (input)="validateCaptureChance()" 
-                   class="input-field input-font w-full p-2 border rounded" 
-                   type="number" min="0" max="100" 
-                   placeholder="Chance de captura (0-100)">
-            <div *ngIf="captureChanceError" class="text-red-500 text-sm mt-1">
-              A chance de captura deve estar entre 0 e 100.
-            </div>
-          </div>
-  
-          <div class="action-buttons flex justify-end">
-            <button (click)="save()" 
-                    [disabled]="captureChanceError" 
-                    class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md">
-              Cadastrar Pokémon
-            </button>
-          </div>
-  
+  <video autoplay muted loop class="bg-video">
+    <source src="assets/gengar.mp4" type="video/mp4">
+  </video>  
+
+  <div class="container">
+    <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Cadastro de Pokémon</h2>
+
+    <div class="user-card p-6 bg-white rounded-lg shadow-lg">
+      <div class="user-info space-y-4">
+
+        <div>
+          <label class="title-form">Nome do Pokémon:</label>
+          <input [(ngModel)]="pokemonData.name" 
+                 (blur)="fetchPokemonImage()" 
+                 class="input-field input-font w-full p-2 border rounded" 
+                 type="text" 
+                 placeholder="Nome do Pokémon">
         </div>
+
+        <div>
+          <label class="title-form">Link da Imagem:</label>
+          <input [(ngModel)]="pokemonData.imageLink" 
+                 class="input-field input-font w-full p-2 border rounded bg-gray-200" 
+                 type="text" 
+                 placeholder="Link da imagem" 
+                 readonly>
+        </div>
+
+        <div *ngIf="loadingImage" class="text-blue-500 text-sm mt-1">
+          Buscando imagem...
+        </div>
+
+        <div *ngIf="pokemonData.imageLink">
+          <label class="title-form">Imagem do Pokémon:</label>
+          <img [src]="pokemonData.imageLink" 
+               alt="Imagem do Pokémon" 
+               class="w-32 h-32 object-cover rounded-full mx-auto">
+        </div>
+
+        <div>
+          <label class="title-form">Porcentagem de Chance de Captura:</label>
+          <input [(ngModel)]="pokemonData.captureChance" 
+                 (input)="validateCaptureChance()" 
+                 class="input-field input-font w-full p-2 border rounded" 
+                 type="number" min="0" max="100" 
+                 placeholder="Chance de captura (0-100)">
+          <div *ngIf="captureChanceError" class="text-red-500 text-sm mt-1">
+            A chance de captura deve estar entre 0 e 100.
+          </div>
+        </div>
+
+        <div class="action-buttons flex justify-end">
+          <button (click)="save()" 
+                  [disabled]="captureChanceError" 
+                  class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md">
+            Cadastrar Pokémon
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
-  
+</div>
