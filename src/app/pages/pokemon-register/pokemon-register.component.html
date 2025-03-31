@@ -21,14 +21,18 @@
         <div>
           <label class="title-form">Link da Imagem:</label>
           <input [(ngModel)]="pokemonData.imageLink" 
-                 class="input-field input-font w-full p-2 border rounded bg-gray-200" 
+                 class="input-field input-font w-full p-2 border rounded" 
                  type="text" 
-                 placeholder="Link da imagem" 
-                 readonly>
+                 placeholder="Link da imagem"
+                 [readonly]="!notFound">
         </div>
 
         <div *ngIf="loadingImage" class="text-blue-500 text-sm mt-1">
           Buscando imagem...
+        </div>
+
+        <div *ngIf="notFound" class="text-yellow-500 text-sm mt-1">
+          Pokémon não encontrado. Insira uma URL manualmente.
         </div>
 
         <div *ngIf="pokemonData.imageLink">

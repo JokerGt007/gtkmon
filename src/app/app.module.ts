@@ -58,6 +58,7 @@ import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-regis
     AuthService,
     FirebaseTSAuth,
     UserService // <-- Registra aqui também
+    
   ],
   bootstrap: [AppComponent]
 })
