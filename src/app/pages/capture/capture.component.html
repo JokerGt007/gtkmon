@@ -1,5 +1,26 @@
-<div id="page-landing">
+<div class="capture-page">
     <video autoplay muted loop class="bg-video">
-        <source src="assets/capture.mp4" type="video/mp4">
-    </video>  
+      <source src="assets/capture.mp4" type="video/mp4">
+      Seu navegador não suporta vídeos.
+    </video>
+
+    <!-- Título posicionado no topo -->
+    <h2 class="title-font">Tela de Captura</h2>
+    
+    <!-- Card no centro -->
+    <div class="capture-card">
+        <div *ngIf="pokemonSorteado">
+            <h3 class="pokemon-name">{{ pokemonSorteado.name }}</h3>
+            <img [src]="pokemonSorteado.imageLink" class="pokemon-image" alt="{{ pokemonSorteado.name }}">
+            <p class="capture-chance">Chance de Captura: {{ pokemonSorteado.captureChance }}%</p>
+    
+            <button (click)="tentarCaptura()" [disabled]="capturaRealizada" class="capture-btn">
+                Capturar!
+            </button>
+        </div>
+  
+        <div *ngIf="!pokemonSorteado">
+            <p>Carregando Pokémon...</p>
+        </div>
+    </div>
 </div>

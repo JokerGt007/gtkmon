@@ -1,9 +1,99 @@
+.capture-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Fundo de vídeo cobrindo toda a tela */
 .bg-video {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
+
+/* Ajusta o título para ficar fixo no topo */
+.title-font {
+    position: absolute;
+    top: 19px; /* Posiciona próximo da navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'PokemonFont', sans-serif;
+    color: #f3ba34;
+    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
+      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
+      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Centraliza o card no meio exato da tela */
+.capture-card {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.39);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.pokemon-name {
+    font-family: 'PokemonFont', sans-serif;
+    color: #ffffff;
+    text-shadow: -2px -2px 1px #000000, 2px -2px 1px #000000, -2px 2px 1px #000000,
+      2px 2px 1px #000000, 0px -3px 1px #000000, 0px 3px 1px #000000,
+      -3px 0px 1px #000000, 3px 0px 1px #000000;
+    font-size: 2rem;
+    margin-top: -7%;
+    text-transform: capitalize;
+}
+
+/* Ajusta o tamanho da imagem */
+.pokemon-image {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* Estilização do botão */
+.capture-btn {
+    margin-top: 10px;
+    background-color: #f97316;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.capture-btn:hover {
+    background-color: #ea580c;
+}
+
+/* Melhor responsividade */
+@media (max-width: 480px) {
+    .pokemon-image {
+        width: 180px;
+        height: 180px;
+    }
+    .capture-card {
+        max-width: 90%;
+    }
 }
