@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 export interface Pokemon {
-  id?: number; // ID numérico crescente
+  id?: number;  // ID numérico crescente
   name: string;
   imageLink: string;
   captureChance: number;
@@ -14,30 +14,28 @@ export interface Pokemon {
   providedIn: 'root'
 })
 export class PokeCreateService {
-  constructor(private firestore: AngularFirestore) {}
 
-  // Adicionar um Pokémon ao Firestore com ID numérico crescente
-  async addPokemon(pokemon: Pokemon): Promise<void> {
-    const lastId = await this.getLastPokemonId();
-    const newId = lastId + 1;
+  private apiUrl = 'http://localhost:3000'; // URL da sua API backend
 
-    return this.firestore.collection('Pokemons').doc(newId.toString()).set({ ...pokemon, id: newId });
+  constructor(private http: HttpClient) {}
+
+  // Adicionar um Pokémon através da API
+  addPokemon(pokemon: Pokemon): Observable<any> {
+    return this.http.post(`${this.apiUrl}/addPokemon`, pokemon).pipe(
+      catchError((error) => {
+        console.error('Erro ao adicionar Pokémon:', error);
+        throw error; // Lança o erro para ser tratado onde a função for chamada
+      })
+    );
   }
 
-  // Obter todos os Pokémons cadastrados
+  // Obter todos os Pokémons através da API
   getPokemons(): Observable<Pokemon[]> {
-    return this.firestore.collection<Pokemon>('Pokemons').valueChanges();
-  }
-
-  // Buscar o maior ID atualmente cadastrado
-  private async getLastPokemonId(): Promise<number> {
-    const snapshot = await this.firestore.collection<Pokemon>('Pokemons', ref => ref.orderBy('id', 'desc').limit(1)).get().toPromise();
-    
-    if (snapshot && !snapshot.empty) {
-      const lastPokemon = snapshot.docs[0].data() as Pokemon; // Cast explícito para o tipo Pokemon
-      return lastPokemon.id ?? 0; // Retorna o ID ou 0 caso não exista
-    }
-    
-    return 0; // Se não houver Pokémons cadastrados, começamos do 0
+    return this.http.get<Pokemon[]>(`${this.apiUrl}/getPokemons`).pipe(
+      catchError((error) => {
+        console.error('Erro ao buscar Pokémons:', error);
+        throw error; // Lança o erro para ser tratado onde a função for chamada
+      })
+    );
   }
 }
