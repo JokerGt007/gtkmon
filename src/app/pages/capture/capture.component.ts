@@ -10,42 +10,69 @@ import { AlertService } from 'src/app/services/alert.service';
 export class CaptureComponent implements OnInit {
   pokemonSorteado: Pokemon | null = null;
   capturaRealizada = false;
+  capturando = false;
+  capturado = false;
+  exibindoGif = false;
 
   constructor(private pokeService: PokeCreateService, private alertService: AlertService) {}
 
   ngOnInit(): void {
-    this.sortearPokemon();
+    const savedPokemon = localStorage.getItem('pokemonSorteado');
+    if (savedPokemon) {
+      this.pokemonSorteado = JSON.parse(savedPokemon);
+    } else {
+      this.sortearPokemon();
+    }
   }
 
   sortearPokemon() {
-    this.pokeService.getPokemons().subscribe(pokemons => {
-      if (pokemons.length > 0) {
-        const randomIndex = Math.floor(Math.random() * pokemons.length);
-        this.pokemonSorteado = pokemons[randomIndex];
-        this.capturaRealizada = false;
-      }
-    });
+    this.exibindoGif = true;
+    
+    setTimeout(() => {
+      this.pokeService.getPokemons().subscribe(pokemons => {
+        if (pokemons.length > 0) {
+          const randomIndex = Math.floor(Math.random() * pokemons.length);
+          this.pokemonSorteado = pokemons[randomIndex];
+          localStorage.setItem('pokemonSorteado', JSON.stringify(this.pokemonSorteado));
+          this.capturaRealizada = false;
+          this.capturado = false;
+        }
+        this.exibindoGif = false;
+      });
+    }, 1000); // Tempo para exibir o gif `apper.gif`
   }
 
   tentarCaptura() {
-    // Verifica se há um Pokémon sorteado. Se não houver, a função retorna imediatamente e não faz nada.
-    if (!this.pokemonSorteado) return;
+    if (!this.pokemonSorteado || this.capturando) return;
 
-    // Gera um número aleatório entre 0 e 100 para simular a chance de captura.
-    const chance = Math.random() * 100;
+    this.capturando = true;
+    this.playSound('assets/music.mp3');
 
-    // Compara o número gerado com a chance de captura do Pokémon sorteado.
-    if (chance <= this.pokemonSorteado.captureChance) {
-        // Se o número gerado for menor ou igual à chance de captura, o Pokémon é capturado.
-        // Exibe um alerta informando que o Pokémon foi capturado.
-        this.alertService.show('Sucesso', `Você capturou ${this.pokemonSorteado.name}!`, 3000);
+    setTimeout(() => {
+      const chance = Math.random() * 100;
 
-        // Marca que a captura foi realizada, impedindo novas tentativas para este Pokémon.
-        this.capturaRealizada = true;
-    } else {
-        // Se o número gerado for maior que a chance de captura, o Pokémon escapa.
-        // Exibe um alerta informando que o Pokémon fugiu.
-        this.alertService.show('Falha', `${this.pokemonSorteado.name} escapou!`, 3000);
-    }
+      if (chance <= this.pokemonSorteado!.captureChance) {
+        this.capturado = true;
+        this.alertService.show('Sucesso', `Você capturou ${this.pokemonSorteado!.name}!`, 3000);
+        this.capturando = false;
+        setTimeout(() => {
+          this.sortearPokemon();
+          this.capturado = false;
+          this.capturaRealizada = false;
+          // this.capturando = false;
+        }, 2000);
+      } else {
+        this.alertService.show('Falha', `${this.pokemonSorteado!.name} escapou!`, 3000);
+        setTimeout(() => {
+          this.sortearPokemon();
+          this.capturando = false;
+        }, 1500);
+      }
+    }, 2000);
+  }
+
+  playSound(audioSrc: string) {
+    const audio = new Audio(audioSrc);
+    audio.play();
   }
 }

@@ -9,7 +9,6 @@
     overflow: hidden;
 }
 
-/* Fundo de vídeo cobrindo toda a tela */
 .bg-video {
     position: fixed;
     top: 0;
@@ -20,10 +19,9 @@
     z-index: -1;
 }
 
-/* Ajusta o título para ficar fixo no topo */
 .title-font {
     position: absolute;
-    top: 19px; /* Posiciona próximo da navbar */
+    top: 19px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'PokemonFont', sans-serif;
@@ -35,7 +33,6 @@
     text-align: center;
 }
 
-/* Centraliza o card no meio exato da tela */
 .capture-card {
     position: absolute;
     top: 55%;
@@ -56,11 +53,10 @@
       2px 2px 1px #000000, 0px -3px 1px #000000, 0px 3px 1px #000000,
       -3px 0px 1px #000000, 3px 0px 1px #000000;
     font-size: 2rem;
-    margin-top: -7%;
+    margin-bottom: 10%;
     text-transform: capitalize;
 }
 
-/* Ajusta o tamanho da imagem */
 .pokemon-image {
     width: 250px;
     height: 250px;
@@ -69,7 +65,6 @@
     margin-bottom: 15px;
 }
 
-/* Estilização do botão */
 .capture-btn {
     margin-top: 10px;
     background-color: #f97316;
@@ -87,7 +82,11 @@
     background-color: #ea580c;
 }
 
-/* Melhor responsividade */
+.capture-btn:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
 @media (max-width: 480px) {
     .pokemon-image {
         width: 180px;
