@@ -53,7 +53,7 @@ app.post('/addPokemon', async (req, res) => {
 // Rota para obter todos os Pokémons
 app.get('/getPokemons', async (req, res) => {
   try {
-    console.log('Iniciando busca de Pokémons...');
+    // console.log('Iniciando busca de Pokémons...');
     const snapshot = await db.collection('Pokemons').get();
     if (snapshot.empty) {
       console.log('Nenhum Pokémon encontrado');
