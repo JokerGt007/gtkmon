@@ -15,6 +15,7 @@
           <!-- Menu que será mostrado ao clicar no nome de usuário -->
           <mat-menu #userMenu="matMenu">
             <button mat-menu-item [routerLink]="['/profile']">Meu Perfil</button>
+            <button mat-menu-item [routerLink]="['/pokelist']">Pokelist</button>
             <button mat-menu-item [routerLink]="['/pokedex']">Pokedex</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/listuser']">Usuários</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/pokeregister']">Cadastrar Pokemon</button>

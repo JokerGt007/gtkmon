@@ -43,13 +43,12 @@ app.post('/addPokemon', async (req, res) => {
       id: newId,
     });
 
-    res.status(201).send('Pokémon adicionado com sucesso!');
+    res.status(201).json({ message: "Pokémon adicionado com sucesso!", id: newId });
   } catch (error) {
     console.error('Erro ao adicionar Pokémon:', error);
-    res.status(500).send('Erro ao adicionar Pokémon');
+    res.status(500).json({ message: "Erro ao adicionar Pokémon", error: error.message });
   }
 });
-
 // Rota para obter todos os Pokémons
 app.get('/getPokemons', async (req, res) => {
   try {

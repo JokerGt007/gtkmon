@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 export interface Pokemon {
   id?: number;  // ID numérico crescente
@@ -24,7 +24,7 @@ export class PokeCreateService {
     return this.http.post(`${this.apiUrl}/addPokemon`, pokemon).pipe(
       catchError((error) => {
         console.error('Erro ao adicionar Pokémon:', error);
-        throw error; // Lança o erro para ser tratado onde a função for chamada
+        throw error;
       })
     );
   }

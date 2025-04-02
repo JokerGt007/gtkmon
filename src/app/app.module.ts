@@ -27,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
+import { PokelistComponent } from './pages/pokelist/pokelist.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { PokedexComponent } from './pages/pokedex/pokedex.component';
     ProfileEditComponent,
     PokemonRegisterComponent,
     PokedexComponent,
+    PokelistComponent,
   ],
   imports: [
     BrowserModule,

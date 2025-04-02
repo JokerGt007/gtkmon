@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeCreateService, Pokemon } from 'src/app/services/pokecreate.service';
 import { AlertService } from 'src/app/services/alert.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService, User } from 'src/app/services/user.service';
+import { FirebaseTSAuth } from 'firebasets/firebasetsAuth/firebaseTSAuth';
 
 @Component({
   selector: 'app-capture',
@@ -13,8 +16,15 @@ export class CaptureComponent implements OnInit {
   capturando = false;
   capturado = false;
   exibindoGif = false;
+  usuarioLogado: User | null = null;
+  auth = new FirebaseTSAuth();
 
-  constructor(private pokeService: PokeCreateService, private alertService: AlertService) {}
+  constructor(
+    private pokeService: PokeCreateService,
+    private alertService: AlertService,
+    private firestore: AngularFirestore,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     const savedPokemon = localStorage.getItem('pokemonSorteado');
@@ -22,6 +32,19 @@ export class CaptureComponent implements OnInit {
       this.pokemonSorteado = JSON.parse(savedPokemon);
     } else {
       this.sortearPokemon();
+    }
+
+    this.carregarUsuarioLogado();
+  }
+
+  carregarUsuarioLogado() {
+    const userId = this.auth.getAuth().currentUser?.uid;
+    if (userId) {
+      this.userService.getUser(userId).subscribe(user => {
+        this.usuarioLogado = user || null;
+      });
+    } else {
+      console.warn('Nenhum usuário logado encontrado.');
     }
   }
 
@@ -39,27 +62,28 @@ export class CaptureComponent implements OnInit {
         }
         this.exibindoGif = false;
       });
-    }, 1000); // Tempo para exibir o gif `apper.gif`
+    }, 1000);
   }
 
-  tentarCaptura() {
-    if (!this.pokemonSorteado || this.capturando) return;
+  async tentarCaptura() {
+    if (!this.pokemonSorteado || this.capturando || !this.usuarioLogado) return;
 
     this.capturando = true;
     this.playSound('assets/music.mp3');
 
-    setTimeout(() => {
+    setTimeout(async () => {
       const chance = Math.random() * 100;
-
       if (chance <= this.pokemonSorteado!.captureChance) {
         this.capturado = true;
         this.alertService.show('Sucesso', `Você capturou ${this.pokemonSorteado!.name}!`, 3000);
         this.capturando = false;
+
+        await this.salvarPokemonNoFirestore(this.pokemonSorteado!);
+
         setTimeout(() => {
           this.sortearPokemon();
           this.capturado = false;
           this.capturaRealizada = false;
-          // this.capturando = false;
         }, 2000);
       } else {
         this.alertService.show('Falha', `${this.pokemonSorteado!.name} escapou!`, 3000);
@@ -71,16 +95,40 @@ export class CaptureComponent implements OnInit {
     }, 2000);
   }
 
+  async salvarPokemonNoFirestore(pokemon: Pokemon) {
+    if (!this.usuarioLogado || !this.auth.getAuth().currentUser?.uid) {
+      console.warn('Usuário não encontrado ou não autenticado.');
+      return;
+    }
+  
+    const userId = this.auth.getAuth().currentUser.uid;
+    const bagRef = this.firestore.collection(`Users/${userId}/bag`);
+  
+    // Gerar força aleatória entre 1 e 1000
+    const power = Math.floor(Math.random() * 1000) + 1;
+  
+    try {
+      await bagRef.add({
+        name: pokemon.name,
+        imageLink: pokemon.imageLink,
+        captureChance: pokemon.captureChance,
+        power: power // Adiciona a força ao Pokémon capturado
+      });
+      console.log(`Pokémon salvo com sucesso! Força: ${power}`);
+    } catch (error) {
+      console.error('Erro ao salvar Pokémon:', error);
+    }
+  }
+
   playSound(audioSrc: string) {
     const audio = new Audio(audioSrc);
-    audio.volume = 0.8; // Define o volume
-    audio.currentTime = 1; // Começa a tocar a partir de 2 segundos (ajuste conforme necessário)
+    audio.volume = 0.8;
+    audio.currentTime = 1;
     audio.play();
-  
-    // Para parar a música após um tempo (ex: 5 segundos)
+
     setTimeout(() => {
       audio.pause();
-      audio.currentTime = 0; // Reseta para o início
+      audio.currentTime = 0;
     }, 5000);
   }
 }

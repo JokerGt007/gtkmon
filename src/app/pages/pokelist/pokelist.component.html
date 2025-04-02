@@ -1,0 +1,25 @@
+<div class="pokedex-container">
+    <video autoplay muted loop class="bg-video">
+        <source src="assets/mega-charizard.mp4" type="video/mp4">
+    </video>      
+    <h2 class="title-font">Pokelist</h2>
+
+    <div *ngIf="loading" class="loading">Carregando Pokémons...</div>
+
+    <div class="pokedex-grid">
+      <div *ngFor="let pokemon of allPokemons" class="pokemon-card">
+        <img [src]="pokemon.imageLink" [alt]="pokemon.name" class="pokemon-image">
+        <div class="pokemon-info">
+          <span class="pokemon-number">#{{ pokemon.id }}</span>
+          <h3 class="pokemon-name">{{ pokemon.name | titlecase }}</h3>
+          <div class="pokemon-types">
+            <span *ngFor="let type of pokemon.types" class="pokemon-type" [ngClass]="type">
+              {{ type | titlecase }}
+            </span>
+          </div>
+          <span *ngIf="isCaptured(pokemon.name)" class="captured-badge">✔ Capturado</span>
+        </div>
+        <span *ngIf="isCaptured(pokemon.name)" class="captured-count">{{countPokemon(pokemon.name)}}</span>
+      </div>
+    </div>
+</div>

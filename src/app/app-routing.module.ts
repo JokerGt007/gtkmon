@@ -10,6 +10,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
+import { PokelistComponent } from './pages/pokelist/pokelist.component';
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "listuser", component: ListUserComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "pokeregister", component: PokemonRegisterComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: "pokedex", component: PokedexComponent, canActivate: [AuthGuard]},
+  {path: "pokelist", component: PokelistComponent, canActivate: [AuthGuard]},
   {path: "**", component: HomeComponent}
 ];
 
