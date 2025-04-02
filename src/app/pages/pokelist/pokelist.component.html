@@ -17,6 +17,7 @@
               {{ type | titlecase }}
             </span>
           </div>
+          <span *ngIf="!isCaptured(pokemon.name)" class="captured-badges">X Não Capturado</span>
           <span *ngIf="isCaptured(pokemon.name)" class="captured-badge">✔ Capturado</span>
         </div>
         <span *ngIf="isCaptured(pokemon.name)" class="captured-count">{{countPokemon(pokemon.name)}}</span>

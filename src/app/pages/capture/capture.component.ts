@@ -122,8 +122,8 @@ export class CaptureComponent implements OnInit {
 
   playSound(audioSrc: string) {
     const audio = new Audio(audioSrc);
-    audio.volume = 0.8;
-    audio.currentTime = 1;
+    audio.volume = 0.5;
+    audio.currentTime = 14;
     audio.play();
 
     setTimeout(() => {

@@ -13,7 +13,6 @@ export class PokelistComponent implements OnInit {
   capturedPokemons: string[] = [];
   auth = new FirebaseTSAuth();
   loading = true;
-  capturedCount = 0;
 
   constructor(private pokeService: PokeCreateService, private firestore: AngularFirestore) {}
 
@@ -41,7 +40,6 @@ export class PokelistComponent implements OnInit {
 
     this.firestore.collection(`Users/${userId}/bag`).valueChanges().subscribe((captured: any[]) => {
       this.capturedPokemons = captured.map(pokemon => pokemon.name);
-      this.capturedCount = this.capturedPokemons.length; 
     });
   }
 

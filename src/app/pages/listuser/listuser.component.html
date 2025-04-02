@@ -1,37 +1,47 @@
-<!-- src/app/components/listuser/listuser.component.html -->
 <div class="list-page">
   <video autoplay muted loop class="bg-video">
     <source src="assets/gengaruser.mp4" type="video/mp4">
-  </video>    
-    <div class="container">
-      <!-- Título com classe customizada -->
-      <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Usuários Cadastrados</h2>
-  
-      <!-- Contêiner de cards -->
-      <div class="cards-container">
-        <div *ngFor="let user of users" class="user-card mb-6 p-6">
-          <div class="flex justify-between items-center">
-            <div class="user-info">
-              <p><strong class="title-form">Nome:</strong> {{ user.publicName }}</p>
-              <p><strong class="title-form">Pokémon Favorito:</strong> {{ user.favpoke }}</p>
-              <p><strong class="title-form">Tipo Favorito:</strong> {{ user.favtype }}</p>
-              <p><strong class="title-form">Biografia:</strong> {{ user.biograph }}</p>
-            </div>
-            <div class="action-buttons flex gap-4 items-center">
-              <!-- Seletor de Role -->
-              <select [(ngModel)]="user.newRole" class="role-select p-3 border rounded-md">
-                <option value="admin">Master</option>
-                <option value="hunter">Caçador</option>
-              </select>
-              <button
-                (click)="updateUserRole(user.id, user.newRole)"
-                class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md"
-              >Atualizar
-              </button>
+  </video>
+  <div class="container">
+    <h2 class="title-font text-xl font-bold mb-6 text-center text-gray-700">Usuários Cadastrados</h2>
+
+    <div class="cards-container">
+      <div *ngFor="let user of users" class="user-card mb-6 p-6">
+        <div class="flex justify-between items-center">
+          <div class="user-info">
+            <p><strong class="title-form">Nome:</strong> {{ user.publicName }}</p>
+            <p><strong class="title-form">Pokémon Favorito:</strong> {{ user.favpoke }}</p>
+            <p><strong class="title-form">Tipo Favorito:</strong> {{ user.favtype }}</p>
+            <p><strong class="title-form">Biografia:</strong> {{ user.biograph }}</p>
+          </div>
+          <div class="action-buttons flex gap-4 items-center">
+            <select [(ngModel)]="user.newRole" class="role-select p-3 border rounded-md">
+              <option value="admin">Master</option>
+              <option value="hunter">Caçador</option>
+            </select>
+            <button (click)="updateUserRole(user.id, user.newRole)" class="update-btn bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md">
+              Atualizar
+            </button>
+            <button (click)="toggleShowPokemons(user)" class="button-poke">
+              {{ user.showPokemons ? 'Esconder Pokémons' : 'Mostrar Pokémons' }}
+            </button>
+          </div>
+        </div>
+
+    <!-- Lista de Pokémons capturados -->
+    <div *ngIf="user.showPokemons" class="pokemon-list mt-4">
+      <p *ngIf="user.pokemons.length === 0">Nenhum Pokémon capturado.</p>
+      <div class="pokemon-grid flex flex-wrap gap-2">
+        <div *ngFor="let pokemon of user.pokemons" class="pokemon-item">
+          <img [src]="pokemon.imageLink" [alt]="pokemon.name" class="image-pokemon">
+          <div>
+            <p class="pokemon-name">{{ pokemon.name }}</p>
+            <p class="text-xs text-gray-600">Força: {{ pokemon.power }}</p>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-  
+</div>

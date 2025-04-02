@@ -115,3 +115,47 @@ h2 {
     justify-content: flex-end;
     align-items: center;
 }
+
+.button-poke {
+    background-color: #f97316;
+    border: none;
+    transition: background-color 0.3s ease;
+    padding: 8px 15px; /* Reduzido o padding para diminuir o tamanho do botão */
+    font-size: 0.9rem; /* Diminui o tamanho da fonte para se ajustar melhor ao espaço */
+    border-radius: 5px;
+    max-width: 300px; /* Força o botão a ter no máximo 300px de largura */
+    width: 100%; /* Faz o botão se ajustar à largura do seu contêiner */
+    align-items: center;
+}
+
+.image-pokemon {
+    width: 128px !important;
+    height: 128px !important;
+    object-fit: contain;
+  }
+
+  .pokemon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pokemon-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.pokemon-name {
+    font-size: 18px;
+    font-family: 'PokemonFont', sans-serif;
+    color: #ffffff;
+    text-shadow: -2px -2px 1px #000000, 2px -2px 1px #000000, -2px 2px 1px #000000,
+      2px 2px 1px #000000, 0px -3px 1px #000000, 0px 3px 1px #000000,
+      -3px 0px 1px #000000, 3px 0px 1px #000000;
+    margin-bottom: 10%;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
