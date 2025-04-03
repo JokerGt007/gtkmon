@@ -18,13 +18,16 @@
             </div>
 
             <div class="pokemon-actions">
-                <button mat-icon-button (click)="strengthenPokemon(pokemon)" class="strengthen-btn">
+                <button (click)="strengthenPokemon(pokemon)" 
+                        class="strengthen-btn" 
+                        [disabled]="pokemon.cooldown > 0">
                     <mat-icon>arrow_upward</mat-icon>
                 </button>
                 <button mat-icon-button (click)="deletePokemon(pokemon.id)" class="delete-btn">
                     <mat-icon>delete</mat-icon>
                 </button>
             </div>
+            <span *ngIf="pokemon.cooldown > 0">({{ (pokemon.cooldown / 1000) | number:'1.0-0' }}s)</span>
         </div>
     </div>
 </div>
