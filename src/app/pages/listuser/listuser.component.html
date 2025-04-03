@@ -29,7 +29,7 @@
         </div>
 
     <!-- Lista de Pokémons capturados -->
-    <div *ngIf="user.showPokemons" class="pokemon-list mt-4">
+    <div *ngIf="user.showPokemons" class="pokemon-list mt-4 ">
       <p *ngIf="user.pokemons.length === 0">Nenhum Pokémon capturado.</p>
       <div class="pokemon-grid flex flex-wrap gap-2">
         <div *ngFor="let pokemon of user.pokemons" class="pokemon-item">

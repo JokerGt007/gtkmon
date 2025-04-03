@@ -1,10 +1,10 @@
 <div class="capture-page">
     <video autoplay muted loop class="bg-video">
-      <source src="assets/capture.mp4" type="video/mp4">
+        <source src="assets/capture.mp4" type="video/mp4">
     </video>
 
     <h2 class="title-font">Tela de Captura</h2>
-    
+
     <div class="capture-card">
         <div *ngIf="pokemonSorteado">
             <h3 class="pokemon-name">{{ pokemonSorteado.name }}</h3>
@@ -12,14 +12,28 @@
             <img *ngIf="!exibindoGif && !capturando && !capturado" [src]="pokemonSorteado.imageLink" class="pokemon-image" alt="{{ pokemonSorteado.name }}">
             <img *ngIf="capturando" src="assets/loading.gif" class="pokemon-image">
             <img *ngIf="capturado" src="assets/capture.gif" class="pokemon-image">
-            
+
             <p class="capture-chance">Chance de Captura: {{ pokemonSorteado.captureChance }}%</p>
-    
-            <button (click)="tentarCaptura()" [disabled]="capturaRealizada || capturando" class="capture-btn">
-                Capturar!
-            </button>
+
+            <div class="capture-buttons">
+                <button (click)="tentarCaptura(pokemonSorteado.captureChance)" 
+                        [disabled]="capturaRealizada || capturando" 
+                        class="capture-btn pokeball">
+                    <img src="assets/pokeball.png" alt="Poké Bola">
+                </button>
+                <button (click)="tentarCaptura(pokemonSorteado.captureChance * 1.5)" 
+                        [disabled]="capturaRealizada || capturando" 
+                        class="capture-btn greatball">
+                    <img src="assets/greatball.png" alt="Great Bola">
+                </button>
+                <button (click)="tentarCaptura(pokemonSorteado.captureChance * 3)" 
+                        [disabled]="capturaRealizada || capturando" 
+                        class="capture-btn ultraball">
+                    <img src="assets/ultraball.png" alt="Ultra Bola">
+                </button>
+            </div>
         </div>
-  
+
         <div *ngIf="!pokemonSorteado">
             <img *ngIf="exibindoGif" src="assets/appear.gif" class="pokemon-image">
         </div>

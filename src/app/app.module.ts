@@ -28,6 +28,7 @@ import { ProfileEditComponent } from './pages/profile-edit/profile-edit.componen
 import { PokemonRegisterComponent } from './pages/pokemon-register/pokemon-register.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { PokelistComponent } from './pages/pokelist/pokelist.component';
+import { MypokemonComponent } from './pages/mypokemon/mypokemon.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PokelistComponent } from './pages/pokelist/pokelist.component';
     PokemonRegisterComponent,
     PokedexComponent,
     PokelistComponent,
+    MypokemonComponent,
   ],
   imports: [
     BrowserModule,

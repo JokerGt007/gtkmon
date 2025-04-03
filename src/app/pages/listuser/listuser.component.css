@@ -65,6 +65,7 @@ h2 {
     max-width: 500px; /* Define a largura máxima do cartão */
     flex: 1 1 30%; /* Ajusta para ocupar 30% da largura da linha, o que dá 3 por linha */
     margin: 10px; /* Espaço entre os cards */
+    height: min-content;
 }
 
 /* Media query para telas médias (tela até 768px) */
@@ -129,7 +130,7 @@ h2 {
 }
 
 .image-pokemon {
-    width: 128px !important;
+    width: 210px !important;
     height: 128px !important;
     object-fit: contain;
   }
@@ -141,7 +142,6 @@ h2 {
 }
 
 .pokemon-item {
-    display: flex;
     align-items: center;
     gap: 4px;
     padding: 4px;
@@ -158,4 +158,10 @@ h2 {
     margin-bottom: 10%;
     text-transform: capitalize;
     margin: 5px 0;
+}
+
+
+.pokemon-list {
+    max-height: 265px;
+    overflow-x: auto !important;
 }

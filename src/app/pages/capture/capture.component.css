@@ -65,26 +65,32 @@
     margin-bottom: 15px;
 }
 
-.capture-btn {
+.capture-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre os botões */
     margin-top: 10px;
-    background-color: #f97316;
-    border: none;
-    transition: background-color 0.3s ease;
-    padding: 12px 25px;
-    font-size: 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
 }
 
-.capture-btn:hover {
-    background-color: #ea580c;
+.capture-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.capture-btn img {
+    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 50px;
+    transition: transform 0.2s;
 }
 
 .capture-btn:disabled {
-    background-color: gray;
+    opacity: 0.5;
     cursor: not-allowed;
+}
+
+.capture-btn:hover img {
+    transform: scale(1.1);
 }
 
 @media (max-width: 480px) {

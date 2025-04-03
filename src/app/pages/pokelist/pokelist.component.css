@@ -41,6 +41,7 @@
     padding: 15px;
     text-align: center;
     width: 200px;
+    height: min-content;
 }
 
 .pokemon-image {

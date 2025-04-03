@@ -8,6 +8,7 @@
           <mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_2' }}</mat-icon>
         </button>
         <div *ngIf="!loggedIn()" (click)="onLoginClick()" class="nav-bar-items">Login</div>
+        <div *ngIf="isHunter()" [routerLink]="['/mypokemons']" class="nav-bar-items">Pokes</div>
         <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items">
           <!-- Nome de usuário que vai acionar o menu diretamente ao ser clicado -->
           <span [matMenuTriggerFor]="userMenu">{{ getUsername() }}</span>

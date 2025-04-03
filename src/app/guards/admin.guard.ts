@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
     return new Promise((resolve) => {
       this.auth.listenToSignInStateChanges((user) => {
         if (user) {     
-          this.firestore.getDocument({
+         this.firestore.getDocument( {
             path: ["Users", user.uid],
             onComplete: (result) => {
               if (!result.exists) {
