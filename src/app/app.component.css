@@ -195,3 +195,29 @@ mat-menu {
     transform: scale(1);
   }
 }
+
+@media screen and (max-width: 768px) {
+  #nav-bar-content {
+    grid-template-columns: 1fr; /* Apenas uma coluna no mobile */
+    text-align: center;
+  }
+
+  #nav-bar-left,
+  #nav-bar-right {
+    justify-content: center; /* Centraliza os itens */
+    padding: 0 1em; /* Reduz padding para não estourar a tela */
+  }
+
+  .nav-bar-items {
+    font-size: 1.2em; /* Reduz tamanho da fonte para caber */
+    margin-right: 0.5em; /* Diminui o espaçamento entre os itens */
+  }
+
+  #nav-bar-right button {
+    margin-right: 0.5em;
+  }
+
+  #nav-bar-left .logo {
+    width: 80px; /* Diminui o tamanho da logo no mobile */
+  }
+}

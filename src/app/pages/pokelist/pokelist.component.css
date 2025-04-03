@@ -1,7 +1,7 @@
 /* Contêiner principal */
 .pokedex-container {
     text-align: center;
-    padding: 15px;
+    padding: 5px;
 }
 
 /* Fundo de vídeo responsivo */
@@ -158,5 +158,18 @@
     .pokemon-image {
         width: 80px;
         height: 80px;
+    }
+
+    .pokedex-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+        gap: 8px; /* Reduzindo o espaço entre os cards */
+    }
+
+    .captured-badge {
+        font-size: 1rem;
+    }
+
+    .captured-badges {
+        font-size: 1rem;
     }
 }
