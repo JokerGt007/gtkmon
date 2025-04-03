@@ -1,1 +1,30 @@
-<p>mypokemon works!</p>
+<div class="mypokemon-container">
+    <video autoplay muted loop class="bg-video">
+        <source src="assets/miraidon.mp4" type="video/mp4">
+    </video>      
+    
+    <h2 class="title-font">Meus Pokémon</h2>
+
+    <div *ngIf="myPokemons.length === 0">
+        <p class="no-pokemon">Você ainda não capturou nenhum Pokémon.</p>
+    </div>
+
+    <div class="pokedex-grid">
+        <div *ngFor="let pokemon of myPokemons" class="pokemon-card">
+            <img [src]="pokemon.imageLink" [alt]="pokemon.name" class="pokemon-image">
+            <div class="pokemon-info">
+                <h3 class="pokemon-name">{{ pokemon.name }}</h3>
+                <p class="pokemon-power">Força: {{ pokemon.power }}</p>
+            </div>
+
+            <div class="pokemon-actions">
+                <button mat-icon-button (click)="strengthenPokemon(pokemon)" class="strengthen-btn">
+                    <mat-icon>arrow_upward</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deletePokemon(pokemon.id)" class="delete-btn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -125,6 +125,10 @@ body.dark-mode {
   color: #ffffff !important; /* Amarelo para o título no Dark Mode */
 }
 
+.dark-mode .pokemon-power {
+  color: #ffffff !important;
+}
+
 .dark-mode h2 {
   color: #f5c518 !important; /* Amarelo para o título */
 }
