@@ -1,167 +1,150 @@
-/* Personalizando o título com uma fonte específica */
+/* Personalizando o título */
 .title-font {
-    font-family: 'PokemonFont', sans-serif; /* Fonte personalizada para o título */
-    color: #f3ba34; /* Amarelo para o título */
+    font-family: 'PokemonFont', sans-serif;
+    color: #f3ba34;
     text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
       2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
       -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+    font-size: 2rem; /* Ajuste para melhor legibilidade */
+    text-align: center;
 }
 
+/* Fundo de vídeo responsivo */
 .bg-video {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
     z-index: -1;
 }
 
-/* Personalizando os inputs com outra fonte */
+/* Ajuste para inputs */
 .input-font {
-    font-family: 'Fruktur', cursive; /* Outra fonte para o campo de entrada */
+    font-family: 'Fruktur', cursive;
 }
 
-/* Estilos gerais para a página */
+/* Layout da página */
 .list-page {
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
 }
 
+/* Container de cards */
 .cards-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que os cards quebrem de linha quando necessário */
-    gap: 20px; /* Espaçamento entre os cards */
-    justify-content: flex-start; /* Alinha os cards à esquerda, mas você pode usar 'space-between' para espalhá-los */
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
-/* Estilos do título */
+/* Estilização do título */
 h2 {
-    margin-right: 1em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
+    font-size: 1.8rem;
 }
 
-.title-form{
-    font-family: 'PokemonFont', sans-serif; /* Fonte personalizada para o título */
-    color: #f3ba34; /* Amarelo para o título */
-    text-shadow: -2px -2px 1px #3466af, 2px -2px 1px #3466af, -2px 2px 1px #3466af,
-      2px 2px 1px #3466af, 0px -3px 1px #3466af, 0px 3px 1px #3466af,
-      -3px 0px 1px #3466af, 3px 0px 1px #3466af;
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .title-font {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
 }
 
-.user-info p {
-    font-family: 'Fruktur', cursive; /* Fonte personalizada para as entradas */
-    text-transform: capitalize; /* Força a primeira letra a ser maiúscula */
-}
-/* Personalização dos cards dos usuários */
+/* Estilo dos cards */
 .user-card {
     color: #333;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.575);
+    background: rgba(255, 255, 255, 0.85);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 500px; /* Define a largura máxima do cartão */
-    flex: 1 1 30%; /* Ajusta para ocupar 30% da largura da linha, o que dá 3 por linha */
-    margin: 10px; /* Espaço entre os cards */
-    height: min-content;
+    max-width: 400px;
+    flex: 1 1 100%;
+    margin: 5px;
 }
 
-/* Media query para telas médias (tela até 768px) */
-@media (max-width: 768px) {
+/* Media query para tablets */
+@media (min-width: 600px) {
     .user-card {
-        flex: 1 1 45%; /* Para telas médias, dois cards por linha */
+        flex: 1 1 45%;
     }
 }
 
-/* Media query para telas pequenas (tela até 480px) */
-@media (max-width: 480px) {
+/* Media query para telas grandes */
+@media (min-width: 900px) {
     .user-card {
-        flex: 1 1 100%; /* Para telas pequenas, os cards ocupam toda a largura */
+        flex: 1 1 30%;
     }
 }
 
-/* Estilo do seletor de role */
-.role-select {
-    width: 150px; /* Reduzi a largura do seletor para 150px */
-    font-size: 0.9rem; /* Diminui o tamanho da fonte */
-    color: #333;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 6px 10px; /* Ajuste no padding para reduzir o tamanho */
-    border-radius: 5px;
-}
-
-/* Estilo do botão de atualização */
-.update-btn {
-    background-color: #f97316;
-    border: none;
-    transition: background-color 0.3s ease;
-    padding: 8px 15px; /* Reduzido o padding para diminuir o tamanho do botão */
-    font-size: 0.9rem; /* Diminui o tamanho da fonte para se ajustar melhor ao espaço */
-    border-radius: 5px;
-    max-width: 300px; /* Força o botão a ter no máximo 300px de largura */
-    width: 100%; /* Faz o botão se ajustar à largura do seu contêiner */
-    align-items: center;
-}
-
-.update-btn:hover {
-    background-color: #ea580c;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-    align-items: center;
-}
-
+/* Botões responsivos */
+.update-btn,
 .button-poke {
     background-color: #f97316;
     border: none;
     transition: background-color 0.3s ease;
-    padding: 8px 15px; /* Reduzido o padding para diminuir o tamanho do botão */
-    font-size: 0.9rem; /* Diminui o tamanho da fonte para se ajustar melhor ao espaço */
+    padding: 10px 12px;
+    font-size: 1rem;
     border-radius: 5px;
-    max-width: 300px; /* Força o botão a ter no máximo 300px de largura */
-    width: 100%; /* Faz o botão se ajustar à largura do seu contêiner */
-    align-items: center;
+    width: 100%;
+    text-align: center;
 }
 
-.image-pokemon {
-    width: 210px !important;
-    height: 128px !important;
-    object-fit: contain;
-  }
+.update-btn:hover,
+.button-poke:hover {
+    background-color: #ea580c;
+}
 
-  .pokemon-grid {
+/* Ajustando a grade de Pokémon */
+.pokemon-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: center;
 }
 
+/* Itens da lista de Pokémon */
 .pokemon-item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 4px;
+    padding: 5px;
     border-radius: 4px;
 }
 
+/* Nome do Pokémon */
 .pokemon-name {
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'PokemonFont', sans-serif;
-    color: #ffffff;
-    text-shadow: -2px -2px 1px #000000, 2px -2px 1px #000000, -2px 2px 1px #000000,
-      2px 2px 1px #000000, 0px -3px 1px #000000, 0px 3px 1px #000000,
-      -3px 0px 1px #000000, 3px 0px 1px #000000;
-    margin-bottom: 10%;
+    color: #fff;
+    text-shadow: 2px 2px 2px #000;
     text-transform: capitalize;
     margin: 5px 0;
 }
 
-
+/* Ajuste de altura para lista de Pokémon */
 .pokemon-list {
-    max-height: 265px;
-    overflow-x: auto !important;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Estilos para telas muito pequenas */
+@media (max-width: 480px) {
+    .user-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+    .pokemon-name {
+        font-size: 14px;
+    }
+    .update-btn, .button-poke {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
 }
