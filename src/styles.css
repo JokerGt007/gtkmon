@@ -58,7 +58,6 @@ body.dark-mode {
 .dark-mode button {
   background-color: #333 !important;
   color: white !important;
-  border: 1px solid #555 !important;
 }
 
 .dark-mode button:hover {
