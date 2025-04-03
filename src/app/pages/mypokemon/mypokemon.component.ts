@@ -79,10 +79,10 @@ export class MyPokemonComponent implements OnInit, OnDestroy {
 
     try {
       await this.firestore.collection(`Users/${this.userId}/bag`).doc(pokemon.id).update({
-        power: pokemon.power + 1,
+        power: pokemon.power + 5,
         lastStrengthen: now
       });
-      console.log(`Força de ${pokemon.name} aumentada para ${pokemon.power + 1}!`);
+      console.log(`Força de ${pokemon.name} aumentada para ${pokemon.power + 5}!`);
     } catch (error) {
       console.error('Erro ao fortalecer Pokémon:', error);
     }
