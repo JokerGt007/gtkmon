@@ -139,6 +139,10 @@ body.dark-mode {
   color: #f5c518 !important; /* Amarelo para o título */
 }
 
+.dark-mode .captured-count {
+  color: #ffffff !important; /* Amarelo para o contador de capturados */
+}
+
 /* Fontes dentro de .user-info em Dark Mode */
 .dark-mode .user-info p {
   font-family: 'Fruktur', cursive !important; /* Garantir que a fonte seja aplicada */
