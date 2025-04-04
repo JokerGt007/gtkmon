@@ -39,6 +39,11 @@
     justify-content: center;
 }
 
+.image-pokemon {
+    max-width: 150px;
+    height: auto;
+}
+
 /* Estilização do título */
 h2 {
     margin-bottom: 1rem;
@@ -54,6 +59,9 @@ h2 {
     h2 {
         font-size: 1.5rem;
     }
+    .image-pokemon {
+        max-width: 100px;
+    }
 }
 
 /* Estilo dos cards */
@@ -67,6 +75,7 @@ h2 {
     max-width: 400px;
     flex: 1 1 100%;
     margin: 5px;
+    height: min-content;
 }
 
 /* Media query para tablets */
@@ -74,12 +83,18 @@ h2 {
     .user-card {
         flex: 1 1 45%;
     }
+    .image-pokemon {
+        max-width: 100px;
+    }
 }
 
 /* Media query para telas grandes */
 @media (min-width: 900px) {
     .user-card {
         flex: 1 1 30%;
+    }
+    .image-pokemon {
+        max-width: 100px;
     }
 }
 
@@ -94,6 +109,8 @@ h2 {
     border-radius: 5px;
     width: 100%;
     text-align: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem; 
 }
 
 .update-btn:hover,
@@ -146,5 +163,8 @@ h2 {
     .update-btn, .button-poke {
         font-size: 0.9rem;
         padding: 8px;
+    }
+    .image-pokemon {
+        max-width: 100px;
     }
 }
