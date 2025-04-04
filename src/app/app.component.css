@@ -221,3 +221,14 @@ mat-menu {
     width: 80px; /* Diminui o tamanho da logo no mobile */
   }
 }
+
+.pokeball-icon {
+  width: 32px; /* Ajuste o tamanho da imagem conforme necessário */
+  height: 32px;
+  transition: transform 0.2s;
+}
+
+
+.pokeball-icon:hover {
+  transform: scale(1.1);
+}

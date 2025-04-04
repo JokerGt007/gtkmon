@@ -9,6 +9,9 @@
         </button>
         <div *ngIf="!loggedIn()" (click)="onLoginClick()" class="nav-bar-items">Login</div>
         <div *ngIf="isHunter()" [routerLink]="['/mypokemons']" class="nav-bar-items">Pokes</div>
+        <div *ngIf="isHunter()" [routerLink]="['/capture']" class="nav-bar-items">
+          <img src="assets/pokeball.png" alt="Pokébola" class="pokeball-icon">
+        </div>
         <div *ngIf="loggedIn() && userHasProfile" class="nav-bar-items">
           <!-- Nome de usuário que vai acionar o menu diretamente ao ser clicado -->
           <span [matMenuTriggerFor]="userMenu">{{ getUsername() }}</span>
@@ -20,7 +23,6 @@
             <button mat-menu-item [routerLink]="['/pokedex']">Pokedex</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/listuser']">Usuários</button>
             <button mat-menu-item *ngIf="isAdmin()" [routerLink]="['/pokeregister']">Cadastrar Pokemon</button>
-            <button mat-menu-item *ngIf="isHunter()" [routerLink]="['/capture']">Capture Pokémon</button>
           </mat-menu>
         </div>
         <div *ngIf="loggedIn()" (click)="onLogoutClick()" class="nav-bar-items">Logout</div>

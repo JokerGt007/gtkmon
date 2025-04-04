@@ -60,9 +60,6 @@ body.dark-mode {
   color: white !important;
 }
 
-.dark-mode button:hover {
-  background-color: #444 !important;
-}
 
 /* Links e ícones no modo escuro */
 .dark-mode a {
