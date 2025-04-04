@@ -53,7 +53,7 @@ app.post('/addPokemon', async (req, res) => {
 app.get('/getPokemons', async (req, res) => {
   try {
     // console.log('Iniciando busca de Pokémons...');
-    const snapshot = await db.collection('Pokemons').get();
+    const snapshot = await db.collection('Pokemons').orderBy('id', 'asc').get();
     if (snapshot.empty) {
       console.log('Nenhum Pokémon encontrado');
       return res.status(404).json({ message: 'Nenhum Pokémon encontrado' });
