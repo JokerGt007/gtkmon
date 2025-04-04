@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 // Inicializa o Firebase Admin SDK com o arquivo de credenciais correto
-const serviceAccount = path.join(__dirname, 'gtkmonbase.json'); // Caminho para o seu arquivo de credenciais
+const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS || '{}');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),

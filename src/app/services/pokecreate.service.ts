@@ -15,7 +15,7 @@ export interface Pokemon {
 })
 export class PokeCreateService {
 
-  private apiUrl = 'http://localhost:3000'; // URL da sua API backend
+  private apiUrl = 'https://gtkmon.onrender.com'; // URL da sua API backend
 
   constructor(private http: HttpClient) {}
 
