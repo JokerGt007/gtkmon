@@ -10,9 +10,19 @@
   }
   
 body {
-  font-family: 'Fruktur', cursive; /* Aplica a fonte no corpo do site */
-  padding-top: 6em; /* Ajusta a altura do topo para evitar sobreposição */
+  font-family: 'Fruktur', cursive;
+}
+  
+  /* Aplica a padding só se NÃO for a página de login */
+body:not(.login-page) {
+  padding-top: 6em;
+}
 
+body.login-page, html.login-page {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .main-content {
