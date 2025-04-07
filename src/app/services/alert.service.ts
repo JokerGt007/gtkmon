@@ -10,7 +10,7 @@ export class AlertService {
   show(message: string, action: string = 'Fechar', duration: number = 3000) {
     this.snackBar.open(message, action, {
       duration,
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       verticalPosition: 'top'
     });
   }
