@@ -17,17 +17,17 @@
 
             <div class="capture-buttons">
                 <button (click)="tentarCaptura(pokemonSorteado.captureChance)" 
-                        [disabled]="capturaRealizada || capturando" 
+                        [disabled]="capturaRealizada || capturando || exibindoGif || capturado" 
                         class="capture-btn pokeball">
                     <img src="assets/pokeball.png" alt="Poké Bola">
                 </button>
                 <button (click)="tentarCaptura(pokemonSorteado.captureChance * 1.5)" 
-                        [disabled]="capturaRealizada || capturando" 
+                        [disabled]="capturaRealizada || capturando || exibindoGif || capturado" 
                         class="capture-btn greatball">
                     <img src="assets/greatball.png" alt="Great Bola">
                 </button>
                 <button (click)="tentarCaptura(pokemonSorteado.captureChance * 2)" 
-                        [disabled]="capturaRealizada || capturando" 
+                        [disabled]="capturaRealizada || capturando || exibindoGif || capturado" 
                         class="capture-btn ultraball">
                     <img src="assets/ultraball.png" alt="Ultra Bola">
                 </button>
