@@ -65,21 +65,22 @@ export class CaptureComponent implements OnInit {
     }, 1000);
   }
 
-  async tentarCaptura() {
+  async tentarCaptura(chanceFinal: number) {
     if (!this.pokemonSorteado || this.capturando || !this.usuarioLogado) return;
-
+  
     this.capturando = true;
     this.playSound('assets/music.mp3');
-
+  
     setTimeout(async () => {
       const chance = Math.random() * 100;
-      if (chance <= this.pokemonSorteado!.captureChance) {
+  
+      if (chance <= chanceFinal) {
         this.capturado = true;
         this.alertService.show('Sucesso', `Você capturou ${this.pokemonSorteado!.name}!`, 3000);
         this.capturando = false;
-
+  
         await this.salvarPokemonNoFirestore(this.pokemonSorteado!);
-
+  
         setTimeout(() => {
           this.sortearPokemon();
           this.capturado = false;
